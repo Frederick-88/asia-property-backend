@@ -1,0 +1,27 @@
+References :
+- http://demos.ui-lib.com/gull/html/layout2/dashboard1.html
+- https://admin-redq.vercel.app/customers
+- https://www.realtor.com/
+- https://www.airbnb.com/
+- https://dribbble.com/search/real%20estate%20web
+
+Note :
+- coming into booking page, when want to pay show invoice & alert to notify its coming soon
+
+
+Content :
+- Users Page
+1. Dashboard
+2. Real Estate Lists with Pagination ( if can )
+3. Personal Booking List ( kinda like cart system )
+4. Wishlists
+5. Account Settings
+6. Real Estate Preview with Agent Call / Email
+
+- Admin Page
+1. Mterics / Graphics
+2. Real Estate List Page
+3. Agent List Page
+4. Booking List Page
+5. Users List Page
+6. 
