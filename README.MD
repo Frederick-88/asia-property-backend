@@ -2,7 +2,11 @@
 
 Made with ExpressJS ( Node.js )
 
-References :
+Backend References :
+
+- multiple uploads : https://www.geeksforgeeks.org/upload-and-retrieve-image-on-mongodb-using-mongoose/
+
+Frontend & Concept References :
 
 - http://demos.ui-lib.com/gull/html/layout2/dashboard1.html
 - https://admin-redq.vercel.app/customers
