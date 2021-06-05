@@ -14,11 +14,13 @@
     "debug": "~2.6.9",
     "dotenv": "^10.0.0",
     "express": "~4.16.1",
+    "is-empty": "^1.2.0",
     "jsonwebtoken": "^8.5.1",
     "mongoose": "^5.12.12",
     "morgan": "~1.9.1",
     "multer": "^1.4.2",
-    "nodemon": "^2.0.7"
+    "nodemon": "^2.0.7",
+    "validator": "^13.6.0"
   },
   "description": "backend of asia property website",
   "main": "app.js",
