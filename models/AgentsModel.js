@@ -41,4 +41,10 @@ const AgentsModel = new Schema(
   }
 );
 
+// update updated_at everytime changed
+AgentsModel.pre("save", function preSave(next) {
+  this.updatedAt(Date.now());
+  next();
+});
+
 module.exports = mongoose.model("AgentsModel", AgentsModel);

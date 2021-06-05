@@ -55,4 +55,10 @@ UsersModel.pre("save", function (next) {
   next();
 });
 
+// update updated_at everytime changed
+UsersModel.pre("save", function preSave(next) {
+  this.updatedAt(Date.now());
+  next();
+});
+
 module.exports = mongoose.model("UsersModel", UsersModel);
