@@ -11,12 +11,12 @@ const RealEstatesModel = new Schema(
     agentId: {
       type: Schema.Types.ObjectId,
       required: true,
-      ref: "AgentsModel", // must same as the model's name (exported)
+      ref: "Agents", // must same as the model's name (exported)
     },
     bookingId: {
       type: Schema.Types.ObjectId,
       required: true,
-      ref: "BookingListsModel", // must same as the model's name (exported)
+      ref: "BookingLists", // must same as the model's name (exported)
     },
     images: { type: Array, default: [] },
     type: { type: Array, default: [] }, // apartment, cluster, house, homestay
@@ -61,4 +61,4 @@ const RealEstatesModel = new Schema(
   }
 );
 
-module.exports = mongoose.model("RealEstatesModel", RealEstatesModel);
+module.exports = mongoose.model("RealEstates", RealEstatesModel);

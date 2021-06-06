@@ -61,4 +61,4 @@ UsersModel.pre("save", function preSave(next) {
   next();
 });
 
-module.exports = mongoose.model("UsersModel", UsersModel);
+module.exports = mongoose.model("Users", UsersModel); // export as 'Users' collection name

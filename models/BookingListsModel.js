@@ -6,12 +6,12 @@ const BookingListsModel = new Schema(
     userId: {
       type: Schema.Types.ObjectId,
       required: true,
-      ref: "UsersModel", // must same as the model's name (exported)
+      ref: "Users", // must same as the model's name (exported)
     },
     realEstateId: {
       type: Schema.Types.ObjectId,
       required: true,
-      ref: "RealEstatesModel", // must same as the model's name (exported)
+      ref: "RealEstates", // must same as the model's name (exported)
     },
   },
   {
@@ -22,4 +22,4 @@ const BookingListsModel = new Schema(
   }
 );
 
-module.exports = mongoose.model("BookingListsModel", BookingListsModel);
+module.exports = mongoose.model("BookingLists", BookingListsModel);
