@@ -1,7 +1,7 @@
 const UsersModel = require("../models/UsersModel");
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
-const validateRegisterInput = require("../middleware/RegisterValidator");
+const { registerInputValidation } = require("../middleware/Validators");
 require("dotenv").config();
 const privateKey = process.env.PRIVATE_KEY;
 
@@ -22,8 +22,8 @@ module.exports = {
     }
 
     // Register Validation
-    const errors = validateRegisterInput(obj).errors;
-    const isValid = validateRegisterInput(obj).isValid;
+    const errors = registerInputValidation(obj).errors;
+    const isValid = registerInputValidation(obj).isValid;
 
     // if doesn't pass validation respond to client server with error details
     if (!isValid) {
