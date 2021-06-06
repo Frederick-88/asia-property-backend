@@ -35,16 +35,16 @@ const AgentsModel = new Schema(
   },
   {
     timestamps: {
-      updatedAt: "updated_at",
       createdAt: "created_at",
+      updatedAt: "updated_at",
     },
   }
 );
 
 // update updated_at everytime changed
-AgentsModel.pre("save", function preSave(next) {
-  this.updatedAt(Date.now());
+AgentsModel.pre("save", function (next) {
+  this.updated_at = Date.now();
   next();
 });
 
-module.exports = mongoose.model("AgentsModel", AgentsModel);
+module.exports = mongoose.model("Agents", AgentsModel); // export as 'Agents' collection name
