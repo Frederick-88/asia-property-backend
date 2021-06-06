@@ -169,7 +169,7 @@ module.exports = {
     });
   },
 
-  deleteById: (req, res, next) => {
+  deleteUserById: (req, res, next) => {
     UsersModel.findByIdAndRemove(req.params.userId)
       .then(() => {
         res.status(200).json({
