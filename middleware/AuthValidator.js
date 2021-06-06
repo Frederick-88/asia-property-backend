@@ -7,6 +7,7 @@ module.exports.validateUser = (req, res, next) => {
     if (err) {
       res.status(401).json({
         ...err,
+        status: "error",
         message: "Sorry, it seems you haven't login. Try login again.",
       });
     } else {
@@ -26,13 +27,14 @@ module.exports.validateAdmin = (req, res, next) => {
     //   second, when you have token, the only token that can do the thing is only the token of admin.
     //   to validate admin is myself.
     // todo : check req.userId section
-    if (decoded.role == "admin" && !err) {
+    if (!err && decoded && decoded.role == "admin") {
       console.log(req.userId, decoded);
       req.userId = decoded.id;
       next();
     } else {
       res.status(401).json({
         ...err,
+        status: "error",
         message: "Unauthenticated as an admin.",
       });
     }
