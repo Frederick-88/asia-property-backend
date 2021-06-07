@@ -8,12 +8,14 @@ const cors = require("cors");
 require("dotenv").config();
 
 const indexRouter = require("./routes/index");
-// const usersRouter = require("./routes/UsersRouter");
-// const productRouter = require("./routes/ProductRouter");
+const UsersRouter = require("./routes/UsersRouter");
+const AgentsRouter = require("./routes/AgentsRouter");
 // const orderRouter = require("./routes/OrderRouter");
 
 const app = express();
 
+// to use local mongo database, need to sudo systemctl start mongod to start the db
+// then can connect with compass. read mongoDB handbook in readme for further detail
 const localURLMongoDB = process.env.LOCAL_MONGODB_URL;
 // const onlineURLMongoDB = process.env.ONLINE_MONGODB_URL;
 
@@ -52,8 +54,8 @@ app.use("/public", express.static("public"));
 app.use("/public/uploads", express.static("public"));
 
 app.use("/", indexRouter);
-// app.use("/users", usersRouter);
-// app.use("/product", productRouter);
+app.use("/users", UsersRouter);
+app.use("/agents", AgentsRouter);
 // app.use("/order", orderRouter);
 
 module.exports = app;
