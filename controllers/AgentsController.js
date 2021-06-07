@@ -44,22 +44,28 @@ module.exports = {
             country: req.body.country || selectedAgent.country,
             city: req.body.city || selectedAgent.city,
           },
-          { new: true } // used when we use findByIdAndUpdate, to return the edited document instead of old one
+          { new: true } // used when we use findByIdAndUpdate, to return the updated document instead of old one
         )
           .then((response) => {
             res.status(200).json({
               status: "success",
-              message: `Successfully edited the data of ${selectedAgent.name}.`,
+              message: `Successfully updated the data of ${selectedAgent.name}.`,
               results: response,
             });
           })
-          .catch((error) => res.status(500).json(error));
+          .catch((error) => {
+            console.log(error);
+            res.status(500).json(error);
+          });
       })
-      .catch((error) => res.status(500).json(error));
+      .catch((error) => {
+        console.log(error);
+        res.status(500).json(error);
+      });
   },
 
   getAllAgents: (req, res, next) => {
-    AgentsModel.find({})
+    AgentsModel.find()
       .then((response) => {
         res.status(200).json({
           status: "success",
@@ -67,7 +73,10 @@ module.exports = {
           results: response,
         });
       })
-      .catch((error) => res.status(500).json(error));
+      .catch((error) => {
+        console.log(error);
+        res.status(500).json(error);
+      });
   },
 
   getAgentById: (req, res, next) => {
@@ -79,7 +88,10 @@ module.exports = {
           results: response,
         });
       })
-      .catch((error) => res.status(500).json(error));
+      .catch((error) => {
+        console.log(error);
+        res.status(500).json(error);
+      });
   },
 
   deleteAgentById: (req, res, next) => {
@@ -93,8 +105,14 @@ module.exports = {
               message: `Successfully deleted ${selectedAgent.name}.`,
             });
           })
-          .catch((error) => res.status(500).json(error));
+          .catch((error) => {
+            console.log(error);
+            res.status(500).json(error);
+          });
       })
-      .catch((error) => res.status(500).json(error));
+      .catch((error) => {
+        console.log(error);
+        res.status(500).json(error);
+      });
   },
 };
