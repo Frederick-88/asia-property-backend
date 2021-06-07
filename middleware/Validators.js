@@ -1,9 +1,9 @@
 const Validator = require("validator");
 const isEmpty = require("is-empty");
 
-module.exports = function registerInputValidation(data) {
+module.exports.registerInputValidation = (data) => {
   let errors = {
-    status: "",
+    status: "success",
     message: {
       username: "",
       email: "",
@@ -23,20 +23,20 @@ module.exports = function registerInputValidation(data) {
 
   // Username validator
   if (Validator.isEmpty(data.username)) {
-    errors.status = 422;
+    errors.status = "error";
     errors.message = {
       ...errors.message,
       username: "Username is required.",
     };
     // isAlphanumeric = we dont want "@", "#", etc. Only want text & number.
   } else if (!Validator.isAlphanumeric(data.username)) {
-    errors.status = 422;
+    errors.status = "error";
     errors.message = {
       ...errors.message,
       username: "Username is invalid.",
     };
   } else if (!Validator.isLowercase(data.username)) {
-    errors.status = 422;
+    errors.status = "error";
     errors.message = {
       ...errors.message,
       username: "Username must be lowercase only.",
@@ -45,13 +45,13 @@ module.exports = function registerInputValidation(data) {
 
   // Email validator
   if (Validator.isEmpty(data.email)) {
-    errors.status = 422;
+    errors.status = "error";
     errors.message = {
       ...errors.message,
       email: "Email is required.",
     };
   } else if (!Validator.isEmail(data.email)) {
-    errors.status = 422;
+    errors.status = "error";
     errors.message = {
       ...errors.message,
       email: "Email is invalid.",
@@ -60,7 +60,7 @@ module.exports = function registerInputValidation(data) {
 
   // Password validator
   if (Validator.isEmpty(data.password)) {
-    errors.status = 422;
+    errors.status = "error";
     errors.message = {
       ...errors.message,
       password: "Password is required.",
@@ -71,7 +71,7 @@ module.exports = function registerInputValidation(data) {
       max: 30,
     })
   ) {
-    (errors.status = 422),
+    (errors.status = "error"),
       (errors.message = {
         ...errors.message,
         password:
@@ -81,13 +81,13 @@ module.exports = function registerInputValidation(data) {
 
   // PhoneNumber validator
   if (Validator.isEmpty(data.phone_number)) {
-    errors.status = 422;
+    errors.status = "error";
     errors.message = {
       ...errors.message,
       phone_number: "PhoneNumber is required.",
     };
   } else if (!Validator.isMobilePhone(data.phone_number)) {
-    errors.status = 422;
+    errors.status = "error";
     errors.message = {
       ...errors.message,
       phone_number: "PhoneNumber is invalid.",
@@ -96,7 +96,7 @@ module.exports = function registerInputValidation(data) {
 
   // Country validator
   if (Validator.isEmpty(data.country)) {
-    errors.status = 422;
+    errors.status = "error";
     errors.message = {
       ...errors.message,
       country: "Country is required.",
@@ -105,18 +105,16 @@ module.exports = function registerInputValidation(data) {
 
   // City validator
   if (Validator.isEmpty(data.city)) {
-    errors.status = 422;
+    errors.status = "error";
     errors.message = {
       ...errors.message,
       city: "City is required.",
     };
   }
 
-  console.log(errors);
   return {
     errors,
-    // isValid = no errors occur
-    isValid: isEmpty(errors.status),
+    isValid: errors.status === "success",
   };
 
   // ###################################################
