@@ -27,43 +27,43 @@ module.exports = {
 
     // if doesn't pass validation respond to client server with error details
     if (!isValid) {
-      return res.status(errors.status).json(errors);
+      return res.status(422).json(errors);
     }
 
     UsersModel.find().then((user) => {
-      console.log(user);
-      // todo : move validators in register validator
-
       // Username duplicate validator
       if (user.find((data) => data.username === obj.username)) {
         return res.status(422).json({
           status: "error",
-          message: `"${req.body.username}" username already exist!`,
+          message: `${req.body.username} username already exist!`,
         });
 
         // Email duplicate validator
       } else if (user.find((data) => data.email === obj.email)) {
         return res.status(422).json({
           status: "error",
-          message: `"${req.body.email}" email already exist!`,
+          message: `${req.body.email} email already exist!`,
         });
 
         // PhoneNumber duplicate validator
       } else if (user.find((data) => data.phone_number === obj.phone_number)) {
         return res.status(422).json({
           status: "error",
-          message: `"${req.body.phone_number}" phone number already exist!`,
+          message: `${req.body.phone_number} phone number already exist!`,
         });
       } else {
         UsersModel.create(obj)
           .then((response) => {
             res.status(200).json({
               status: "success",
-              message: "Successfully create account!",
+              message: "Successfully created an account.",
               results: response,
             });
           })
-          .catch((error) => res.status(500).json(error));
+          .catch((error) => {
+            console.log(error);
+            res.status(500).json(error);
+          });
       }
     });
   },
@@ -79,7 +79,6 @@ module.exports = {
         });
       } else {
         if (bcrypt.compareSync(req.body.password, user.password)) {
-          const role = req.params.role;
           //  make payload so that when token is decoded in frontend this is the data that it will get
           const payload = {
             id: user.id,
@@ -93,7 +92,7 @@ module.exports = {
             privateKey,
             { expiresIn: "24h" }, // 1 day of expiration
             (err, token) => {
-              const roleText = role === "admin" ? "Admin" : "User";
+              const roleText = user.role === "admin" ? "Admin" : "User";
 
               res.status(200).json({
                 status: "success",
@@ -113,33 +112,78 @@ module.exports = {
   },
 
   getAllUsers: (req, res, next) => {
-    UsersModel.find({})
+    UsersModel.find()
       .then((response) => {
         res.status(200).json({
           status: "success",
-          message: "Successfully get all users!",
+          message: "Successfully get all users.",
           results: response,
         });
       })
-      .catch((error) => res.status(500).json(error));
+      .catch((error) => {
+        console.log(error);
+        res.status(500).json(error);
+      });
   },
 
   getUserById: (req, res, next) => {
-    UsersModel.findById(req.params.userId)
-      .then((response) => {
-        console.log(response); // todo : change message with name
+    const userId = req.params.userId;
 
+    UsersModel.findById(userId)
+      .then((response) => {
         res.status(200).json({
           status: "success",
-          message: `Successfully get user data with id of ${req.params.userId}.`,
+          message: `Successfully get user data of ${response.username}.`,
           results: response,
         });
       })
-      .catch((error) => res.status(500).json(error));
+      .catch((error) => {
+        console.log(error);
+        res.status(500).json(error);
+      });
+  },
+
+  updateUserProfileById: (req, res, next) => {
+    const userId = req.query.id;
+    const tokenId = req.tokenId; // received/decoded id from token
+    console.log(tokenId, "-----", userId);
+    if (tokenId === userId) {
+      UsersModel.findById(userId).then((selectedUser) => {
+        UsersModel.findByIdAndUpdate(
+          userId,
+          // if request body not exist replace with the existing/old one
+          {
+            image: (req.file && req.file.path) || selectedUser.image,
+            username: req.body.username || selectedUser.username,
+            email: req.body.email || selectedUser.email,
+            phone_number: req.body.phone_number || selectedUser.phone_number,
+            country: req.body.country || selectedUser.country,
+            city: req.body.city || selectedUser.city,
+          },
+          { new: true } // used when we use findByIdAndUpdate, to return the updated document instead of old one
+        )
+          .then((response) => {
+            res.status(200).json({
+              status: "success",
+              message: `Successfully updated the data of ${selectedUser.username} .`,
+              results: response,
+            });
+          })
+          .catch((error) => {
+            console.log(error);
+            res.status(500).json(error);
+          });
+      });
+    } else {
+      res.status(404).json({
+        status: "error",
+        message: "Demanded id not found.",
+      });
+    }
   },
 
   updateUserById: (req, res, next) => {
-    userId = req.params.userId;
+    const userId = req.query.id;
 
     UsersModel.findById(userId).then((selectedUser) => {
       UsersModel.findByIdAndUpdate(
@@ -154,29 +198,41 @@ module.exports = {
           country: req.body.country || selectedUser.country,
           city: req.body.city || selectedUser.city,
         },
-        { new: true } // used when we use findByIdAndUpdate, to return the edited document instead of old one
+        { new: true } // used when we use findByIdAndUpdate, to return the updated document instead of old one
       )
         .then((response) => {
-          console.log(response); // todo : change message with name
-
           res.status(200).json({
             status: "success",
-            message: `Successfully edited the data of ${userId} .`,
+            message: `Successfully updated the data of ${selectedUser.username} .`,
             results: response,
           });
         })
-        .catch((error) => res.status(500).json(error));
+        .catch((error) => {
+          console.log(error);
+          res.status(500).json(error);
+        });
     });
   },
 
   deleteUserById: (req, res, next) => {
-    UsersModel.findByIdAndRemove(req.params.userId)
-      .then(() => {
-        res.status(200).json({
-          status: "success",
-          message: `Successfully delete user with id of ${req.params.userId}.`,
-        });
+    const userId = req.query.id;
+    UsersModel.findById(userId)
+      .then((selectedUser) => {
+        UsersModel.findByIdAndRemove(userId)
+          .then(() => {
+            res.status(200).json({
+              status: "success",
+              message: `Successfully deleted user of ${selectedUser.username}.`,
+            });
+          })
+          .catch((error) => {
+            console.log(error);
+            res.status(500).json(error);
+          });
       })
-      .catch((error) => res.status(500).json(error));
+      .catch((error) => {
+        console.log(error);
+        res.status(500).json(error);
+      });
   },
 };
