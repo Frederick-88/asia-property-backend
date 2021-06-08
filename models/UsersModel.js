@@ -16,7 +16,7 @@ const UsersModel = new Schema(
       unique: true,
     },
     phone_number: {
-      type: Number,
+      type: String,
       required: true,
       unique: true,
     },
@@ -56,8 +56,8 @@ UsersModel.pre("save", function (next) {
 });
 
 // update updated_at everytime changed
-UsersModel.pre("save", function preSave(next) {
-  this.updatedAt(Date.now());
+UsersModel.pre("save", function (next) {
+  this.updated_at = Date.now();
   next();
 });
 
