@@ -5,7 +5,7 @@ Made with ExpressJS ( Node.js )
 Backend References :
 
 - mongoDB handbook & setup: https://docs.mongodb.com/manual/tutorial/install-mongodb-on-ubuntu/
-- multiple uploads: https://www.geeksforgeeks.org/upload-and-retrieve-image-on-mongodb-using-mongoose/
+- multiple uploads: https://codeforgeek.com/multiple-file-upload-node-js/ & https://codeforgeek.com/multiple-file-upload-node-js/
 - create local mongoDB connection: https://zellwk.com/blog/local-mongodb/
 
 Frontend & Concept References :
