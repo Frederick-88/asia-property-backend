@@ -13,11 +13,6 @@ const RealEstatesModel = new Schema(
       required: true,
       ref: "Agents", // must same as the model's name (exported)
     },
-    bookingId: {
-      type: Schema.Types.ObjectId,
-      required: true,
-      ref: "BookingLists", // must same as the model's name (exported)
-    },
     images: { type: Array, default: [] },
     type: { type: Array, default: [] }, // apartment, cluster, house, homestay
     price: {
@@ -60,5 +55,11 @@ const RealEstatesModel = new Schema(
     },
   }
 );
+
+// update updated_at everytime changed
+RealEstatesModel.pre("save", function (next) {
+  this.updated_at = Date.now();
+  next();
+});
 
 module.exports = mongoose.model("RealEstates", RealEstatesModel);
