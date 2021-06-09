@@ -1,5 +1,4 @@
 const AgentsModel = require("../models/AgentsModel");
-require("dotenv").config();
 
 module.exports = {
   createAgent: (req, res, next) => {
