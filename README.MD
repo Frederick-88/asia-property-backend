@@ -6,6 +6,7 @@ Backend References :
 
 - mongoDB handbook & setup: https://docs.mongodb.com/manual/tutorial/install-mongodb-on-ubuntu/
 - multiple uploads: https://codeforgeek.com/multiple-file-upload-node-js/ & https://codeforgeek.com/multiple-file-upload-node-js/
+- receiving array upload : https://stackoverflow.com/questions/12756688/is-it-possible-to-send-an-array-with-the-postman-chrome-extension
 - create local mongoDB connection: https://zellwk.com/blog/local-mongodb/
 
 Frontend & Concept References :
