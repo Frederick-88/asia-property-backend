@@ -10,7 +10,7 @@ require("dotenv").config();
 const indexRouter = require("./routes/index");
 const UsersRouter = require("./routes/UsersRouter");
 const AgentsRouter = require("./routes/AgentsRouter");
-// const orderRouter = require("./routes/OrderRouter");
+const RealEstatesRouter = require("./routes/RealEstatesRouter");
 
 const app = express();
 
@@ -56,6 +56,6 @@ app.use("/public/uploads", express.static("public"));
 app.use("/", indexRouter);
 app.use("/users", UsersRouter);
 app.use("/agents", AgentsRouter);
-// app.use("/order", orderRouter);
+app.use("/real-estate", RealEstatesRouter);
 
 module.exports = app;
