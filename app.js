@@ -11,6 +11,7 @@ const indexRouter = require("./routes/index");
 const UsersRouter = require("./routes/UsersRouter");
 const AgentsRouter = require("./routes/AgentsRouter");
 const RealEstatesRouter = require("./routes/RealEstatesRouter");
+const BookingListsRouter = require("./routes/BookingListsRouter");
 
 const app = express();
 
@@ -47,9 +48,9 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, "public")));
 
-// This is to make public users could access our pictures in the folder of productImages that we have added.
-// Harus mulai dari tahap pertama "/public" ---> dibuat static dan public sehingga bisa diakses di web.
-// dengan url "http://localhost:8000/public/productImages/2020-06-20T10:44:44.152Z-defaultPicture.jpg"
+// This is to make public users could access our pictures in the folder of uploads that we have created.
+// needed to put inside /public ---> and make it static so people could access it.
+// with url "http://localhost:8000/public/uploads/2021-06-11--14:08:20-clothe01.jpg""
 app.use("/public", express.static("public"));
 app.use("/public/uploads", express.static("public"));
 
@@ -57,5 +58,6 @@ app.use("/", indexRouter);
 app.use("/users", UsersRouter);
 app.use("/agents", AgentsRouter);
 app.use("/real-estate", RealEstatesRouter);
+app.use("/booking-list", BookingListsRouter);
 
 module.exports = app;
