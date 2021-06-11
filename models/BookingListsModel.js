@@ -3,6 +3,11 @@ const Schema = mongoose.Schema;
 
 const BookingListsModel = new Schema(
   {
+    bookingTitle: {
+      type: String,
+      default: "-",
+      required: true,
+    },
     userId: {
       type: Schema.Types.ObjectId,
       required: true,
@@ -23,7 +28,7 @@ const BookingListsModel = new Schema(
 );
 
 // update updated_at everytime changed
-AgentsModel.pre("save", function (next) {
+BookingListsModel.pre("save", function (next) {
   this.updated_at = Date.now();
   next();
 });
