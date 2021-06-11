@@ -8,7 +8,7 @@ const RealEstatesModel = new Schema(
       required: true,
       unique: true,
     },
-    agentId: {
+    agent: {
       type: Schema.Types.ObjectId,
       required: true,
       ref: "Agents", // must same as the model's name (exported)
@@ -16,8 +16,8 @@ const RealEstatesModel = new Schema(
     images: { type: Array, default: [] },
     type: { type: Array, default: [] }, // apartment, cluster, house, homestay
     price: {
-      type: Number,
-      default: 0,
+      type: String,
+      default: "-",
       required: true,
     },
     is_booking_available: {
@@ -25,12 +25,12 @@ const RealEstatesModel = new Schema(
       default: false,
     },
     booking_fee: {
-      type: Number,
-      default: 0,
+      type: String,
+      default: "-",
     },
     status: {
       type: String,
-      default: "available", // available, sold, rented, renting
+      default: "available", // available, sold, rented, renting, booked
     },
     country: {
       type: String,
