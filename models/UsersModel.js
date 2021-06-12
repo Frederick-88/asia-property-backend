@@ -52,13 +52,7 @@ const UsersModel = new Schema(
 );
 UsersModel.pre("save", function (next) {
   this.password = bcrypt.hashSync(this.password, saltRounds);
+  this.updated_at = Date.now(); // update updated_at everytime changed
   next();
 });
-
-// update updated_at everytime changed
-UsersModel.pre("save", function (next) {
-  this.updated_at = Date.now();
-  next();
-});
-
 module.exports = mongoose.model("Users", UsersModel); // export as 'Users' collection name
