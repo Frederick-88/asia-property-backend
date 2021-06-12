@@ -3,10 +3,17 @@ const RealEstatesModel = require("../models/RealEstatesModel");
 
 module.exports = {
   createBookingList: (req, res, next) => {
-    let number = 0;
     BookingListsModel.find()
       .then((getResponse) => {
-        number = getResponse.length + 1;
+        // find highest number created, and add 1 to prevent duplication.
+        let highestNumber = 0;
+        getResponse.forEach((booking) => {
+          const getNumber = parseInt(
+            booking.bookingTitle.replace(/[^0-9]/g, "")
+          );
+          highestNumber = Math.max(getNumber, highestNumber);
+        });
+        const number = highestNumber + 1;
 
         const obj = {
           bookingTitle: `Booking-${number}`,
