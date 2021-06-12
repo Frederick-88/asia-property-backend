@@ -4,7 +4,13 @@ const privateKey = process.env.PRIVATE_KEY;
 
 module.exports.validateUser = (req, res, next) => {
   jwt.verify(req.headers["access-token"], privateKey, (err, decoded) => {
-    if (err) {
+    if (err.expiredAt) {
+      res.status(401).json({
+        ...err,
+        status: "error",
+        message: "The token is expired. Try to login again.",
+      });
+    } else if (err) {
       res.status(401).json({
         ...err,
         status: "error",
@@ -19,7 +25,13 @@ module.exports.validateUser = (req, res, next) => {
 
 module.exports.validateAdmin = (req, res, next) => {
   jwt.verify(req.headers["access-token"], privateKey, (err, decoded) => {
-    if (!err && decoded && decoded.role == "admin") {
+    if (err.expiredAt) {
+      res.status(401).json({
+        ...err,
+        status: "error",
+        message: "The token is expired. Try to login as admin again.",
+      });
+    } else if (!err && decoded && decoded.role == "admin") {
       req.tokenId = decoded.id; // pass token data (id) to any controller that need it.
       next();
     } else {
