@@ -18,7 +18,8 @@ module.exports = {
     };
 
     if (req.file && req.file.path) {
-      obj.image = req.file.path;
+      const url = "https://asia-property.herokuapp.com/";
+      obj.image = url + req.file.path;
     }
 
     // Register Validation
@@ -149,17 +150,24 @@ module.exports = {
     console.log(tokenId, "-----", userId);
     if (tokenId === userId) {
       UsersModel.findById(userId).then((selectedUser) => {
+        const url = "https://asia-property.herokuapp.com/";
+        // if request body not exist replace with the existing/old one
+        const editObj = {
+          username: req.body.username || selectedUser.username,
+          email: req.body.email || selectedUser.email,
+          phone_number: req.body.phone_number || selectedUser.phone_number,
+          country: req.body.country || selectedUser.country,
+          city: req.body.city || selectedUser.city,
+        };
+        if (req.file && req.file.path) {
+          editObj.image = url + req.file.path;
+        } else {
+          editObj.image = selectedUser.image;
+        }
+
         UsersModel.findByIdAndUpdate(
           userId,
-          // if request body not exist replace with the existing/old one
-          {
-            image: (req.file && req.file.path) || selectedUser.image,
-            username: req.body.username || selectedUser.username,
-            email: req.body.email || selectedUser.email,
-            phone_number: req.body.phone_number || selectedUser.phone_number,
-            country: req.body.country || selectedUser.country,
-            city: req.body.city || selectedUser.city,
-          },
+          editObj,
           { new: true } // used when we use findByIdAndUpdate, to return the updated document instead of old one
         )
           .then((response) => {
@@ -186,24 +194,31 @@ module.exports = {
     const userId = req.query.id;
 
     UsersModel.findById(userId).then((selectedUser) => {
+      const url = "https://asia-property.herokuapp.com/";
+      // if request body not exist replace with the existing/old one
+      const editObj = {
+        username: req.body.username || selectedUser.username,
+        email: req.body.email || selectedUser.email,
+        phone_number: req.body.phone_number || selectedUser.phone_number,
+        role: req.body.role || selectedUser.role,
+        country: req.body.country || selectedUser.country,
+        city: req.body.city || selectedUser.city,
+      };
+      if (req.file && req.file.path) {
+        editObj.image = url + req.file.path;
+      } else {
+        editObj.image = selectedUser.image;
+      }
+
       UsersModel.findByIdAndUpdate(
         userId,
-        // if request body not exist replace with the existing/old one
-        {
-          image: (req.file && req.file.path) || selectedUser.image,
-          username: req.body.username || selectedUser.username,
-          email: req.body.email || selectedUser.email,
-          phone_number: req.body.phone_number || selectedUser.phone_number,
-          role: req.body.role || selectedUser.role,
-          country: req.body.country || selectedUser.country,
-          city: req.body.city || selectedUser.city,
-        },
+        editObj,
         { new: true } // used when we use findByIdAndUpdate, to return the updated document instead of old one
       )
         .then((response) => {
           res.status(200).json({
             status: "success",
-            message: `Successfully updated the data of ${selectedUser.username} .`,
+            message: `Successfully updated the data of ${selectedUser.username}.`,
             results: response,
           });
         })
