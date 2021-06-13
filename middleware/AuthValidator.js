@@ -4,7 +4,7 @@ const privateKey = process.env.PRIVATE_KEY;
 
 module.exports.validateUser = (req, res, next) => {
   jwt.verify(req.headers["access-token"], privateKey, (err, decoded) => {
-    if (err.expiredAt) {
+    if (err && err.expiredAt) {
       res.status(401).json({
         ...err,
         status: "error",
@@ -25,7 +25,7 @@ module.exports.validateUser = (req, res, next) => {
 
 module.exports.validateAdmin = (req, res, next) => {
   jwt.verify(req.headers["access-token"], privateKey, (err, decoded) => {
-    if (err.expiredAt) {
+    if (err && err.expiredAt) {
       res.status(401).json({
         ...err,
         status: "error",
