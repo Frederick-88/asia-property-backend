@@ -11,7 +11,8 @@ module.exports = {
     };
 
     if (req.file && req.file.path) {
-      obj.image = req.file.path;
+      const url = "https://asia-property.herokuapp.com/";
+      obj.image = url + req.file.path;
     }
 
     AgentsModel.create(obj)
@@ -32,17 +33,24 @@ module.exports = {
     const agentId = req.query.id;
     AgentsModel.findById(agentId)
       .then((selectedAgent) => {
+        const url = "https://asia-property.herokuapp.com/";
+        // if request body not exist replace with the existing/old one
+        const editObj = {
+          name: req.body.name || selectedAgent.name,
+          email: req.body.email || selectedAgent.email,
+          phone_number: req.body.phone_number || selectedAgent.phone_number,
+          country: req.body.country || selectedAgent.country,
+          city: req.body.city || selectedAgent.city,
+        };
+        if (req.file && req.file.path) {
+          editObj.image = url + req.file.path;
+        } else {
+          editObj.image = selectedAgent.image;
+        }
+
         AgentsModel.findByIdAndUpdate(
           agentId,
-          // if request body not exist replace with the existing/old one
-          {
-            image: (req.file && req.file.path) || selectedAgent.image,
-            name: req.body.name || selectedAgent.name,
-            email: req.body.email || selectedAgent.email,
-            phone_number: req.body.phone_number || selectedAgent.phone_number,
-            country: req.body.country || selectedAgent.country,
-            city: req.body.city || selectedAgent.city,
-          },
+          editObj,
           { new: true } // used when we use findByIdAndUpdate, to return the updated document instead of old one
         )
           .then((response) => {
