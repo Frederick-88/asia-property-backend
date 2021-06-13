@@ -31,28 +31,28 @@ Made with ExpressJS ( Node.js ) & MongoDB, API link - https://asia-property.hero
 | email       |
 | password    |
 
-| GetAllUsers Field        |
-| ------------------------ |
-| **access-token** (admin) |
+| GetAllUsers Field      |
+| ---------------------- |
+| `access-token` (admin) |
 
-| GetUserById Field        |
-| ------------------------ |
-| **access-token** (admin) |
+| GetUserById Field      |
+| ---------------------- |
+| `access-token` (admin) |
 
-| UpdateUserById Field     |
-| ------------------------ |
-| **access-token** (admin) |
-| username                 |
-| email                    |
-| phone_number             |
-| role                     |
-| image                    |
-| country                  |
-| city                     |
+| UpdateUserById Field   |
+| ---------------------- |
+| `access-token` (admin) |
+| username               |
+| email                  |
+| phone_number           |
+| role                   |
+| image                  |
+| country                |
+| city                   |
 
 | UpdateUserProfile Field |
 | ----------------------- |
-| **access-token** (user) |
+| `access-token` (user)   |
 | username                |
 | email                   |
 | phone_number            |
@@ -60,9 +60,9 @@ Made with ExpressJS ( Node.js ) & MongoDB, API link - https://asia-property.hero
 | country                 |
 | city                    |
 
-| DeleteUserById Field     |
-| ------------------------ |
-| **access-token** (admin) |
+| DeleteUserById Field   |
+| ---------------------- |
+| `access-token` (admin) |
 
 #### Users GetAll Response
 
@@ -113,47 +113,47 @@ Made with ExpressJS ( Node.js ) & MongoDB, API link - https://asia-property.hero
 | GET    | `/real-estate/get-by-id/${realestate_id}` | get real estate data by id    |
 | DELETE | `/real-estate/delete?id=${realestate_id}` | delete real estate by id      |
 
-| CreateRealEstate Field      |
-| --------------------------- |
-| **access-token** (admin)    |
-| name                        |
-| agent(agent_id)             |
-| type                        |
-| price                       |
-| images[] **(can_multiple)** |
-| is_booking_available        |
-| booking_fee                 |
-| status                      |
-| address                     |
-| country                     |
-| city                        |
+| CreateRealEstate Field    |
+| ------------------------- |
+| `access-token` (admin)    |
+| name                      |
+| agent(agent_id)           |
+| type                      |
+| price                     |
+| images[] `(can_multiple)` |
+| is_booking_available      |
+| booking_fee               |
+| status                    |
+| address                   |
+| country                   |
+| city                      |
 
-| UpdateRealEstate Field      |
-| --------------------------- |
-| **access-token** (admin)    |
-| name                        |
-| agent(agent_id)             |
-| type                        |
-| price                       |
-| images[] **(can_multiple)** |
-| is_booking_available        |
-| booking_fee                 |
-| status                      |
-| address                     |
-| country                     |
-| city                        |
+| UpdateRealEstate Field    |
+| ------------------------- |
+| `access-token` (admin)    |
+| name                      |
+| agent(agent_id)           |
+| type                      |
+| price                     |
+| images[] `(can_multiple)` |
+| is_booking_available      |
+| booking_fee               |
+| status                    |
+| address                   |
+| country                   |
+| city                      |
 
 | GetAllRealEstates Field |
 | ----------------------- |
-| **no_any_field**        |
+| `no_any_field`          |
 
 | GetRealEstateById Field |
 | ----------------------- |
-| **no_any_field**        |
+| `no_any_field`          |
 
-| DeleteRealEstate Field   |
-| ------------------------ |
-| **access-token** (admin) |
+| DeleteRealEstate Field |
+| ---------------------- |
+| `access-token` (admin) |
 
 #### RealEstates GetAll Response
 
@@ -238,37 +238,37 @@ Made with ExpressJS ( Node.js ) & MongoDB, API link - https://asia-property.hero
 | GET    | `/agents/get-by-id/${agent_id}` | get agent data by id    |
 | DELETE | `/agents/delete?id=${agent_id}` | delete agent by id      |
 
-| CreateAgent Field        |
-| ------------------------ |
-| **access-token** (admin) |
-| name                     |
-| email                    |
-| phone_number             |
-| image                    |
-| country                  |
-| city                     |
+| CreateAgent Field      |
+| ---------------------- |
+| `access-token` (admin) |
+| name                   |
+| email                  |
+| phone_number           |
+| image                  |
+| country                |
+| city                   |
 
-| UpdateAgent Field        |
-| ------------------------ |
-| **access-token** (admin) |
-| name                     |
-| email                    |
-| phone_number             |
-| image                    |
-| country                  |
-| city                     |
+| UpdateAgent Field      |
+| ---------------------- |
+| `access-token` (admin) |
+| name                   |
+| email                  |
+| phone_number           |
+| image                  |
+| country                |
+| city                   |
 
-| GetAllAgents Field      |
-| ----------------------- |
-| **access-token** (user) |
+| GetAllAgents Field    |
+| --------------------- |
+| `access-token` (user) |
 
-| GetAgentById Field      |
-| ----------------------- |
-| **access-token** (user) |
+| GetAgentById Field    |
+| --------------------- |
+| `access-token` (user) |
 
-| DeleteAgent Field        |
-| ------------------------ |
-| **access-token** (admin) |
+| DeleteAgent Field      |
+| ---------------------- |
+| `access-token` (admin) |
 
 #### Agents GetAll Response
 
@@ -315,29 +315,29 @@ Made with ExpressJS ( Node.js ) & MongoDB, API link - https://asia-property.hero
 | GET    | `/booking-list/get-by-id/${bookinglist_id}` | get booking list data by id    |
 | DELETE | `/booking-list/delete?id=${bookinglist_id}` | delete booking list by id      |
 
-| CreateBookingList Field  |
-| ------------------------ |
-| **access-token** (admin) |
-| userId                   |
-| realEstateId             |
+| CreateBookingList Field |
+| ----------------------- |
+| `access-token` (admin)  |
+| userId                  |
+| realEstateId            |
 
-| UpdateBookingList Field  |
-| ------------------------ |
-| **access-token** (admin) |
-| userId                   |
-| realEstateId             |
+| UpdateBookingList Field |
+| ----------------------- |
+| `access-token` (admin)  |
+| userId                  |
+| realEstateId            |
 
 | GetAllBookingLists Field |
 | ------------------------ |
-| **access-token** (admin) |
+| `access-token` (admin)   |
 
 | GetBookingListById Field |
 | ------------------------ |
-| **access-token** (admin) |
+| `access-token` (admin)   |
 
-| DeleteBookingList Field  |
-| ------------------------ |
-| **access-token** (admin) |
+| DeleteBookingList Field |
+| ----------------------- |
+| `access-token` (admin)  |
 
 #### BookingLists GetAll Response
 
