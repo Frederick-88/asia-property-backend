@@ -147,7 +147,6 @@ module.exports = {
   updateUserProfileById: (req, res, next) => {
     const userId = req.query.id;
     const tokenId = req.tokenId; // received/decoded id from token
-    console.log(tokenId, "-----", userId);
     if (tokenId === userId) {
       UsersModel.findById(userId).then((selectedUser) => {
         const url = "https://asia-property.herokuapp.com/";
