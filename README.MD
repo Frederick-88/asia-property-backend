@@ -113,35 +113,35 @@ Made with ExpressJS ( Node.js ) & MongoDB, API link - https://asia-property.hero
 | GET    | `/real-estate/get-by-id/${realestate_id}` | get real estate data by id    |
 | DELETE | `/real-estate/delete?id=${realestate_id}` | delete real estate by id      |
 
-| CreateRealEstate Field    |
-| ------------------------- |
-| `access-token` (admin)    |
-| name                      |
-| agent(agent_id)           |
-| type                      |
-| price                     |
-| images[] `(can_multiple)` |
-| is_booking_available      |
-| booking_fee               |
-| status                    |
-| address                   |
-| country                   |
-| city                      |
+| CreateRealEstate Field     |
+| -------------------------- |
+| `access-token` (admin)     |
+| name                       |
+| agent(agent_id)            |
+| type                       |
+| price                      |
+| images[ ] `(can_multiple)` |
+| is_booking_available       |
+| booking_fee                |
+| status                     |
+| address                    |
+| country                    |
+| city                       |
 
-| UpdateRealEstate Field    |
-| ------------------------- |
-| `access-token` (admin)    |
-| name                      |
-| agent(agent_id)           |
-| type                      |
-| price                     |
-| images[] `(can_multiple)` |
-| is_booking_available      |
-| booking_fee               |
-| status                    |
-| address                   |
-| country                   |
-| city                      |
+| UpdateRealEstate Field     |
+| -------------------------- |
+| `access-token` (admin)     |
+| name                       |
+| agent(agent_id)            |
+| type                       |
+| price                      |
+| images[ ] `(can_multiple)` |
+| is_booking_available       |
+| booking_fee                |
+| status                     |
+| address                    |
+| country                    |
+| city                       |
 
 | GetAllRealEstates Field |
 | ----------------------- |
@@ -427,6 +427,8 @@ Made with ExpressJS ( Node.js ) & MongoDB, API link - https://asia-property.hero
   ]
 }
 ```
+
+---
 
 Backend References :
 
