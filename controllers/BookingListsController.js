@@ -129,15 +129,21 @@ module.exports = {
 
   getAllBookingLists: (req, res, next) => {
     BookingListsModel.find()
-      .populate({
-        path: "agent",
-        select: ["name", "email", "image", "phone_number", "country", "city"],
-      })
+      .populate("userId")
+      .populate("realEstateId")
       .then((response) => {
+        const newResponse = response.map((booking) => {
+          return {
+            _id: booking._id,
+            bookingTitle: booking.bookingTitle,
+            user: booking.userId,
+            realEstate: booking.realEstateId,
+          };
+        });
         res.status(200).json({
           status: "success",
           message: "Successfully get all booking lists.",
-          results: response,
+          results: newResponse,
         });
       })
       .catch((error) => {
@@ -151,10 +157,16 @@ module.exports = {
       .populate("userId")
       .populate("realEstateId")
       .then((response) => {
+        const newResponse = {
+          _id: response._id,
+          bookingTitle: response.bookingTitle,
+          user: response.userId,
+          realEstate: response.realEstateId,
+        };
         res.status(200).json({
           status: "success",
           message: `Successfully get the booking list of ${response.bookingTitle}.`,
-          results: response,
+          results: newResponse,
         });
       })
       .catch((error) => {
