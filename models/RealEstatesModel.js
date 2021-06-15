@@ -28,6 +28,22 @@ const RealEstatesModel = new Schema(
       type: String,
       default: "-",
     },
+    bedroom: {
+      type: Number,
+      default: 0,
+    },
+    bath: {
+      type: Number,
+      default: 0,
+    },
+    description: {
+      type: String,
+      default: "-",
+    },
+    rating: {
+      type: Number,
+      default: 0,
+    },
     status: {
       type: String,
       default: "available", // available, sold, rented, renting, booked
