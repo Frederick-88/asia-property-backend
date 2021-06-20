@@ -20,13 +20,9 @@ const RealEstatesModel = new Schema(
       default: "-",
       required: true,
     },
-    is_booking_available: {
+    is_featured: {
       type: Boolean,
       default: false,
-    },
-    booking_fee: {
-      type: String,
-      default: "-",
     },
     bedroom: {
       type: Number,
@@ -46,7 +42,7 @@ const RealEstatesModel = new Schema(
     },
     status: {
       type: String,
-      default: "available", // available, sold, rented, renting, booked
+      default: "available", // available, sold, rented, renting
     },
     country: {
       type: String,

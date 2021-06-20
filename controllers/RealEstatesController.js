@@ -7,8 +7,7 @@ module.exports = {
       agent: req.body.agent,
       type: req.body.type,
       price: req.body.price,
-      is_booking_available: req.body.is_booking_available,
-      booking_fee: req.body.booking_fee,
+      is_featured: req.body.is_featured,
       bedroom: req.body.bedroom,
       bath: req.body.bath,
       description: req.body.description,
@@ -71,10 +70,7 @@ module.exports = {
           agent: req.body.agent || selectedRealEstate.agent,
           type: req.body.type || selectedRealEstate.type,
           price: req.body.price || selectedRealEstate.price,
-          is_booking_available:
-            req.body.is_booking_available ||
-            selectedRealEstate.is_booking_available,
-          booking_fee: req.body.booking_fee || selectedRealEstate.booking_fee,
+          is_featured: req.body.is_featured || selectedRealEstate.is_featured,
           bedroom: req.body.bedroom || selectedRealEstate.bedroom,
           bath: req.body.bath || selectedRealEstate.bath,
           description: req.body.description || selectedRealEstate.description,

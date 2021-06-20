@@ -28,8 +28,7 @@ module.exports = {
               .then((response) => {
                 // update the selected real estate
                 const editRealEstateObj = {
-                  is_booking_available: false,
-                  status: "booked",
+                  is_featured: true,
                 };
                 RealEstatesModel.findByIdAndUpdate(
                   req.body.realEstateId,
@@ -89,8 +88,7 @@ module.exports = {
               .then((response) => {
                 // update the selected real estate
                 const editRealEstateObj = {
-                  is_booking_available: false,
-                  status: "booked",
+                  is_featured: true,
                 };
                 RealEstatesModel.findByIdAndUpdate(
                   req.body.realEstateId,

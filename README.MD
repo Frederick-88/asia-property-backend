@@ -121,8 +121,7 @@ Made with ExpressJS ( Node.js ) & MongoDB, API link - https://asia-property.hero
 | type                       |
 | price                      |
 | images[ ] `(can_multiple)` |
-| is_booking_available       |
-| booking_fee                |
+| is_featured                |
 | status                     |
 | address                    |
 | country                    |
@@ -136,8 +135,7 @@ Made with ExpressJS ( Node.js ) & MongoDB, API link - https://asia-property.hero
 | type                       |
 | price                      |
 | images[ ] `(can_multiple)` |
-| is_booking_available       |
-| booking_fee                |
+| is_featured                |
 | status                     |
 | address                    |
 | country                    |
@@ -172,8 +170,7 @@ Made with ExpressJS ( Node.js ) & MongoDB, API link - https://asia-property.hero
         "villa"
       ],
       "price": "1.000.000.000",
-      "is_booking_available": false,
-      "booking_fee": "-",
+      "is_featured": false,
       "status": "available",
       "country": "indonesia",
       "city": "batam",
@@ -203,9 +200,8 @@ Made with ExpressJS ( Node.js ) & MongoDB, API link - https://asia-property.hero
         "villa"
       ],
       "price": "1.000.000.000",
-      "is_booking_available": false,
-      "booking_fee": "750.000",
-      "status": "booked",
+      "is_featured": false,
+      "status": "available",
       "country": "indonesia",
       "city": "batam",
       "address": "Jalan Batam no.88",
@@ -371,9 +367,8 @@ Made with ExpressJS ( Node.js ) & MongoDB, API link - https://asia-property.hero
           "villa"
         ],
         "price": "1.000.000.000",
-        "is_booking_available": false,
-        "booking_fee": "-",
-        "status": "booked",
+        "is_featured": true,
+        "status": "available",
         "country": "indonesia",
         "city": "batam",
         "address": "Jalan Batam no.9",
@@ -410,9 +405,8 @@ Made with ExpressJS ( Node.js ) & MongoDB, API link - https://asia-property.hero
           "villa"
         ],
         "price": "1.000.000.000",
-        "is_booking_available": false,
-        "booking_fee": "750.000",
-        "status": "booked",
+        "is_featured": false,
+        "status": "available",
         "country": "indonesia",
         "city": "batam",
         "address": "Jalan Batam no.88",
