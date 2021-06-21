@@ -11,23 +11,23 @@ const indexRouter = require("./routes/index");
 const UsersRouter = require("./routes/UsersRouter");
 const AgentsRouter = require("./routes/AgentsRouter");
 const RealEstatesRouter = require("./routes/RealEstatesRouter");
-const BookingListsRouter = require("./routes/BookingListsRouter");
+const FeaturedListsRouter = require("./routes/FeaturedListsRouter");
 
 const app = express();
 
 // to use local mongo database, need to run "sudo systemctl start mongod" in terminal to start the DB
 // then can connect with compass. read mongoDB handbook in readme for further detail
-// const localURLMongoDB = process.env.LOCAL_MONGODB_URL;
-const onlineURLMongoDB = process.env.ONLINE_MONGODB_URL;
+const localURLMongoDB = process.env.LOCAL_MONGODB_URL;
+// const onlineURLMongoDB = process.env.ONLINE_MONGODB_URL;
 
-mongoose.connect(onlineURLMongoDB, {
+mongoose.connect(localURLMongoDB, {
   useNewUrlParser: true,
   useUnifiedTopology: true,
   useFindAndModify: false,
 });
 const databaseConnection = mongoose.connection;
 databaseConnection.once("open", () => {
-  console.log("Database connected:", onlineURLMongoDB);
+  console.log("Database connected:", localURLMongoDB);
 });
 databaseConnection.on("error", (err) => {
   console.error("connection error:", err);
@@ -58,6 +58,6 @@ app.use("/", indexRouter);
 app.use("/users", UsersRouter);
 app.use("/agents", AgentsRouter);
 app.use("/real-estate", RealEstatesRouter);
-app.use("/booking-list", BookingListsRouter);
+app.use("/featured-list", FeaturedListsRouter);
 
 module.exports = app;
