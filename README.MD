@@ -301,50 +301,51 @@ Made with ExpressJS ( Node.js ) & MongoDB, API link - https://asia-property.hero
 }
 ```
 
-#### BookingLists Endpoints
+#### FeaturedLists Endpoints
 
-| Method | Endpoint                                    | Description                    |
-| ------ | ------------------------------------------- | ------------------------------ |
-| POST   | `/booking-list/create`                      | create a new booking list data |
-| PUT    | `/booking-list/update`                      | update a booking list data     |
-| GET    | `/booking-list/get`                         | get all booking list data      |
-| GET    | `/booking-list/get-by-id/${bookinglist_id}` | get booking list data by id    |
-| DELETE | `/booking-list/delete?id=${bookinglist_id}` | delete booking list by id      |
+| Method | Endpoint                                      | Description                     |
+| ------ | --------------------------------------------- | ------------------------------- |
+| POST   | `/featured-list/create`                       | create a new featured list data |
+| PUT    | `/featured-list/update`                       | update a featured list data     |
+| GET    | `/featured-list/get`                          | get all featured list data      |
+| GET    | `/featured-list/get-by-id/${featuredlist_id}` | get featured list data by id    |
+| DELETE | `/featured-list/delete?id=${featuredlist_id}` | delete featured list by id      |
 
-| CreateBookingList Field |
-| ----------------------- |
-| `access-token` (admin)  |
-| userId                  |
-| realEstateId            |
+| CreateFeaturedList Field |
+| ------------------------ |
+| `access-token` (admin)   |
+| userId                   |
+| realEstateId             |
 
-| UpdateBookingList Field |
-| ----------------------- |
-| `access-token` (admin)  |
-| userId                  |
-| realEstateId            |
+| UpdateFeaturedList Field |
+| ------------------------ |
+| `access-token` (admin)   |
+| userId                   |
+| realEstateId             |
 
-| GetAllBookingLists Field |
+| GetAllFeaturedLists Field |
+| ------------------------- |
+| `access-token` (admin)    |
+
+| GetFeaturedListById Field |
+| ------------------------- |
+| `access-token` (admin)    |
+
+| DeleteFeaturedList Field |
 | ------------------------ |
 | `access-token` (admin)   |
 
-| GetBookingListById Field |
-| ------------------------ |
-| `access-token` (admin)   |
-
-| DeleteBookingList Field |
-| ----------------------- |
-| `access-token` (admin)  |
-
-#### BookingLists GetAll Response
+#### FeaturedLists GetAll Response ( TODO: Update Response )
 
 ```javascript
 {
   "status": "success",
-  "message": "Successfully get all booking lists.",
+  "message": "Successfully get all featured lists.",
   "results": [
     {
       "_id": "60c37f842da1dc22c72fc166",
-      "bookingTitle": "Booking-1",
+      "featured_title": "Featured-RealEstate-1",
+      "featured_cost": "100.000",
       "user": {
         "image": "https://asia-property.herokuapp.com/public/uploads/2021-06-07--14:49:21-default-product-image.jpg",
         "country": "indonesia",
@@ -355,7 +356,6 @@ Made with ExpressJS ( Node.js ) & MongoDB, API link - https://asia-property.hero
         "phone_number": "081288880001",
         "created_at": "2021-06-07T14:49:21.554Z",
         "updated_at": "2021-06-07T14:49:21.578Z",
-        "__v": 0
       },
       "realEstate": {
         "images": [
@@ -377,12 +377,11 @@ Made with ExpressJS ( Node.js ) & MongoDB, API link - https://asia-property.hero
         "agent": "60bca4fd033e1d38148d6703",
         "created_at": "2021-06-11T15:00:44.315Z",
         "updated_at": "2021-06-13T13:24:13.821Z",
-        "__v": 0
       }
     },
     {
       "_id": "60c3810ada992323ae2fc26a",
-      "bookingTitle": "Booking-2",
+      "featured_title": "Featured-RealEstate-2",
       "user": {
         "image": "https://asia-property.herokuapp.com/public/uploads/2021-06-07--14:49:21-default-product-image.jpg",
         "country": "indonesia",
@@ -393,7 +392,6 @@ Made with ExpressJS ( Node.js ) & MongoDB, API link - https://asia-property.hero
         "phone_number": "081288880001",
         "created_at": "2021-06-07T14:49:21.554Z",
         "updated_at": "2021-06-07T14:49:21.578Z",
-        "__v": 0
       },
       "realEstate": {
         "images": [
@@ -412,7 +410,15 @@ Made with ExpressJS ( Node.js ) & MongoDB, API link - https://asia-property.hero
         "address": "Jalan Batam no.88",
         "_id": "60c36d7fc9afc41487338b52",
         "name": "Apartment 88-edited",
-        "agent": "60bca4fd033e1d38148d6703",
+        "agent": {
+          "image": "https://asia-property.herokuapp.com/public/uploads/2021-06-13--13:03:26-default-agent-pic.jpg",
+          "country": "indonesia",
+          "city": "tanjung pinang",
+          "_id": "60bca4fd033e1d38148d6703",
+          "name": "fred+agent+2",
+          "email": "fred+agent+2@gmail.com",
+          "phone_number": "085800000002",
+        },
         "created_at": "2021-06-11T14:04:47.507Z",
         "updated_at": "2021-06-13T13:23:10.638Z",
         "__v": 0
