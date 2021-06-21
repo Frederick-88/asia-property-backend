@@ -1,11 +1,16 @@
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
-const BookingListsModel = new Schema(
+const FeaturedListsModel = new Schema(
   {
-    bookingTitle: {
+    featured_title: {
       type: String,
       default: "-",
+      required: true,
+    },
+    featured_cost: {
+      type: String,
+      default: "100.000",
       required: true,
     },
     userId: {
@@ -28,9 +33,9 @@ const BookingListsModel = new Schema(
 );
 
 // update updated_at everytime changed
-BookingListsModel.pre("save", function (next) {
+FeaturedListsModel.pre("save", function (next) {
   this.updated_at = Date.now();
   next();
 });
 
-module.exports = mongoose.model("BookingLists", BookingListsModel);
+module.exports = mongoose.model("FeaturedLists", FeaturedListsModel);
