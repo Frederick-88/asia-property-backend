@@ -6,14 +6,14 @@ References :
 - https://dribbble.com/search/real%20estate%20web
 
 Note :
-- coming into booking page, when want to pay show invoice & alert to notify its coming soon
+- coming into featured page, when want to pay show invoice & alert to notify its coming soon
 
 
 Content :
 - Users Page
 1. Dashboard
 2. Real Estate Lists with Pagination ( if can )
-3. Personal Booking List ( kinda like cart system )
+3. Personal Featured List ( kinda like cart system )
 4. Wishlists
 5. Account Settings
 6. Real Estate Preview with Agent Call / Email
@@ -22,6 +22,6 @@ Content :
 1. Mterics / Graphics
 2. Real Estate List Page
 3. Agent List Page
-4. Booking List Page
+4. Featured List Page
 5. Users List Page
 6. 
