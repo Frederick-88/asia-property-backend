@@ -32,6 +32,7 @@ router.put(
 );
 router.get("/get", RealEstatesController.getAllRealEstates);
 router.get("/get-by-id/:realEstateId", RealEstatesController.getRealEstateById);
+router.get("/search", RealEstatesController.searchRealEstate);
 router.delete(
   "/delete",
   validateAdmin,
