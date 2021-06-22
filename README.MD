@@ -105,13 +105,14 @@ Made with ExpressJS ( Node.js ) & MongoDB, API link - https://asia-property.hero
 
 #### RealEstates Endpoints
 
-| Method | Endpoint                                  | Description                   |
-| ------ | ----------------------------------------- | ----------------------------- |
-| POST   | `/real-estate/create`                     | create a new real estate data |
-| PUT    | `/real-estate/update`                     | update a real estate data     |
-| GET    | `/real-estate/get`                        | get all real estates data     |
-| GET    | `/real-estate/get-by-id/${realestate_id}` | get real estate data by id    |
-| DELETE | `/real-estate/delete?id=${realestate_id}` | delete real estate by id      |
+| Method | Endpoint                                    | Description                   |
+| ------ | ------------------------------------------- | ----------------------------- |
+| POST   | `/real-estate/create`                       | create a new real estate data |
+| PUT    | `/real-estate/update`                       | update a real estate data     |
+| GET    | `/real-estate/get`                          | get all real estates data     |
+| GET    | `/real-estate/get-by-id/${realestate_id}`   | get real estate data by id    |
+| GET    | `/real-estate/search?search_query=${query}` | search real estates data      |
+| DELETE | `/real-estate/delete?id=${realestate_id}`   | delete real estate by id      |
 
 | CreateRealEstate Field     |
 | -------------------------- |
