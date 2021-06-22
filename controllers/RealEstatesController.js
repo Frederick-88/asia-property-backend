@@ -154,6 +154,28 @@ module.exports = {
       });
   },
 
+  searchRealEstate: (req, res) => {
+    const realEstateNameQuery = req.query.search_query;
+    const realEstateQuery = new RegExp(realEstateNameQuery, "i"); //regex for search by query
+
+    RealEstatesModel.find({ name: realEstateQuery })
+      .populate({
+        path: "agent",
+        select: ["name", "email", "image", "phone_number", "country", "city"],
+      })
+      .then((response) => {
+        res.status(200).json({
+          status: "success",
+          message: `Successfully get real estates based on '${realEstateNameQuery}' search query.`,
+          results: response,
+        });
+      })
+      .catch((error) => {
+        console.log(error);
+        res.status(500).json(error);
+      });
+  },
+
   deleteRealEstateById: (req, res, next) => {
     const realEstateId = req.query.id;
 
