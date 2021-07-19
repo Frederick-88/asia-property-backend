@@ -13,8 +13,6 @@ module.exports = {
       phone_number: req.body.phone_number,
       password: req.body.password,
       role: "user",
-      country: req.body.country,
-      city: req.body.city,
     };
 
     if (req.file && req.file.path) {
@@ -98,6 +96,7 @@ module.exports = {
               res.status(200).json({
                 status: "success",
                 message: `Successfully Login as ${roleText}.`,
+                role: user.role,
                 token: token,
               });
             }
@@ -155,8 +154,6 @@ module.exports = {
           username: req.body.username || selectedUser.username,
           email: req.body.email || selectedUser.email,
           phone_number: req.body.phone_number || selectedUser.phone_number,
-          country: req.body.country || selectedUser.country,
-          city: req.body.city || selectedUser.city,
         };
         if (req.file && req.file.path) {
           editObj.image = url + req.file.path;
@@ -200,8 +197,6 @@ module.exports = {
         email: req.body.email || selectedUser.email,
         phone_number: req.body.phone_number || selectedUser.phone_number,
         role: req.body.role || selectedUser.role,
-        country: req.body.country || selectedUser.country,
-        city: req.body.city || selectedUser.city,
       };
       if (req.file && req.file.path) {
         editObj.image = url + req.file.path;
