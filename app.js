@@ -11,7 +11,7 @@ const indexRouter = require("./routes/index");
 const UsersRouter = require("./routes/UsersRouter");
 const AgentsRouter = require("./routes/AgentsRouter");
 const RealEstatesRouter = require("./routes/RealEstatesRouter");
-const FeaturedListsRouter = require("./routes/FeaturedListsRouter");
+const WishlistsRouter = require("./routes/WishlistsRouter");
 
 const app = express();
 
@@ -58,6 +58,6 @@ app.use("/", indexRouter);
 app.use("/users", UsersRouter);
 app.use("/agents", AgentsRouter);
 app.use("/real-estate", RealEstatesRouter);
-app.use("/featured-list", FeaturedListsRouter);
+app.use("/wishlist", WishlistsRouter);
 
 module.exports = app;

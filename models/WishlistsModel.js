@@ -1,18 +1,8 @@
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
-const FeaturedListsModel = new Schema(
+const WishlistsModel = new Schema(
   {
-    featured_title: {
-      type: String,
-      default: "-",
-      required: true,
-    },
-    featured_cost: {
-      type: String,
-      default: "100.000",
-      required: true,
-    },
     userId: {
       type: Schema.Types.ObjectId,
       required: true,
@@ -33,9 +23,9 @@ const FeaturedListsModel = new Schema(
 );
 
 // update updated_at everytime changed
-FeaturedListsModel.pre("save", function (next) {
+WishlistsModel.pre("save", function (next) {
   this.updated_at = Date.now();
   next();
 });
 
-module.exports = mongoose.model("FeaturedLists", FeaturedListsModel);
+module.exports = mongoose.model("Wishlists", WishlistsModel);
