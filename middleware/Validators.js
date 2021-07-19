@@ -9,17 +9,14 @@ module.exports.registerInputValidation = (data) => {
       email: "",
       password: "",
       phone_number: "",
-      country: "",
-      city: "",
     },
   };
+
   //  avoid error pop-up
   data.username = !isEmpty(data.username) ? data.username : "";
   data.email = !isEmpty(data.email) ? data.email : "";
   data.password = !isEmpty(data.password) ? data.password : "";
   data.phone_number = !isEmpty(data.phone_number) ? data.phone_number : "";
-  data.country = !isEmpty(data.country) ? data.country : "";
-  data.city = !isEmpty(data.city) ? data.city : "";
 
   // Username validator
   if (Validator.isEmpty(data.username)) {
@@ -94,24 +91,6 @@ module.exports.registerInputValidation = (data) => {
     };
   }
 
-  // Country validator
-  if (Validator.isEmpty(data.country)) {
-    errors.status = "error";
-    errors.message = {
-      ...errors.message,
-      country: "Country is required.",
-    };
-  }
-
-  // City validator
-  if (Validator.isEmpty(data.city)) {
-    errors.status = "error";
-    errors.message = {
-      ...errors.message,
-      city: "City is required.",
-    };
-  }
-
   return {
     errors,
     isValid: errors.status === "success",
@@ -126,8 +105,6 @@ module.exports.registerInputValidation = (data) => {
   //     "email": "Email is required.",
   //     "password": "Password is required."
   //     "phone_number": "phone_number is required.",
-  //     "country": "country is required."
-  //     "city": "city is required."
   //   }
   // }
   // ###################################################

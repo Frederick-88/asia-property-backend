@@ -30,17 +30,8 @@ const UsersModel = new Schema(
     },
     image: {
       type: String,
-      default: "public/images/default-user.png",
-    },
-    country: {
-      type: String,
-      default: "",
-      required: true,
-    },
-    city: {
-      type: String,
-      default: "",
-      required: true,
+      default:
+        "https://asia-property.herokuapp.com/public/images/default-user.png",
     },
   },
   {
