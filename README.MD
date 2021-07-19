@@ -23,8 +23,6 @@ Made with ExpressJS ( Node.js ) & MongoDB, API link - https://asia-property.hero
 | phone_number   |
 | password       |
 | image          |
-| country        |
-| city           |
 
 | Login Field |
 | ----------- |
@@ -47,8 +45,6 @@ Made with ExpressJS ( Node.js ) & MongoDB, API link - https://asia-property.hero
 | phone_number           |
 | role                   |
 | image                  |
-| country                |
-| city                   |
 
 | UpdateUserProfile Field |
 | ----------------------- |
@@ -57,8 +53,6 @@ Made with ExpressJS ( Node.js ) & MongoDB, API link - https://asia-property.hero
 | email                   |
 | phone_number            |
 | image                   |
-| country                 |
-| city                    |
 
 | DeleteUserById Field   |
 | ---------------------- |
@@ -74,8 +68,6 @@ Made with ExpressJS ( Node.js ) & MongoDB, API link - https://asia-property.hero
     {
       "role": "user",
       "image": "https://asia-property.herokuapp.com/public/uploads/2021-06-13--08:14:51-default-user.png",
-      "country": "indonesia",
-      "city": "batam",
       "_id": "60c49fbda02e303a0b7a2b14",
       "username": "propertyuser",
       "email": "propertyuser@gmail.com",
@@ -83,13 +75,10 @@ Made with ExpressJS ( Node.js ) & MongoDB, API link - https://asia-property.hero
       "password": "$2b$08$rSpIqlHRwHOZYEVIlS9zHONwP1uwnWXyzbHa66v7neZD.Gk3GFmWq",
       "created_at": "2021-06-12T11:51:25.391Z",
       "updated_at": "2021-06-13T08:14:51.162Z",
-      "__v": 0
     },
     {
       "role": "admin",
       "image": "https://asia-property.herokuapp.com/public/uploads/2021-06-13--08:16:44-default-user.png",
-      "country": "indonesia",
-      "city": "batam",
       "_id": "60c49fd6a02e303a0b7a2b15",
       "username": "propertyadmin",
       "email": "propertyadmin@gmail.com",
@@ -97,7 +86,6 @@ Made with ExpressJS ( Node.js ) & MongoDB, API link - https://asia-property.hero
       "password": "$2b$08$NTT4yIyg.GlPoW21QTlNW.RWQjtH71B0OtYq8wn8WoeDJ/ceQAFI2",
       "created_at": "2021-06-12T11:51:50.021Z",
       "updated_at": "2021-06-13T08:16:44.029Z",
-      "__v": 0
     }
   ]
 }
@@ -105,14 +93,14 @@ Made with ExpressJS ( Node.js ) & MongoDB, API link - https://asia-property.hero
 
 #### RealEstates Endpoints
 
-| Method | Endpoint                                    | Description                   |
-| ------ | ------------------------------------------- | ----------------------------- |
-| POST   | `/real-estate/create`                       | create a new real estate data |
-| PUT    | `/real-estate/update`                       | update a real estate data     |
-| GET    | `/real-estate/get`                          | get all real estates data     |
-| GET    | `/real-estate/get-by-id/${realestate_id}`   | get real estate data by id    |
-| GET    | `/real-estate/search?search_query=${query}` | search real estates data      |
-| DELETE | `/real-estate/delete?id=${realestate_id}`   | delete real estate by id      |
+| Method | Endpoint                                                              | Description                   |
+| ------ | --------------------------------------------------------------------- | ----------------------------- |
+| POST   | `/real-estate/create`                                                 | create a new real estate data |
+| PUT    | `/real-estate/update`                                                 | update a real estate data     |
+| GET    | `/real-estate/get`                                                    | get all real estates data     |
+| GET    | `/real-estate/get-by-id/${realestate_id}`                             | get real estate data by id    |
+| GET    | `/real-estate/search?search_query=${query}&type=${for-rent/for-sale}` | search real estates data      |
+| DELETE | `/real-estate/delete?id=${realestate_id}`                             | delete real estate by id      |
 
 | CreateRealEstate Field     |
 | -------------------------- |
@@ -120,9 +108,14 @@ Made with ExpressJS ( Node.js ) & MongoDB, API link - https://asia-property.hero
 | name                       |
 | agent(agent_id)            |
 | type                       |
-| price                      |
 | images[ ] `(can_multiple)` |
+| price                      |
 | is_featured                |
+| is_renting                 |
+| bedroom_count              |
+| bathroom_count             |
+| building_size              |
+| description                |
 | status                     |
 | address                    |
 | country                    |
@@ -134,9 +127,14 @@ Made with ExpressJS ( Node.js ) & MongoDB, API link - https://asia-property.hero
 | name                       |
 | agent(agent_id)            |
 | type                       |
-| price                      |
 | images[ ] `(can_multiple)` |
+| price                      |
 | is_featured                |
+| is_renting                 |
+| bedroom_count              |
+| bathroom_count             |
+| building_size              |
+| description                |
 | status                     |
 | address                    |
 | country                    |
@@ -163,20 +161,53 @@ Made with ExpressJS ( Node.js ) & MongoDB, API link - https://asia-property.hero
   "results": [
     {
       "images": [
-        "https://asia-property.herokuapp.com/2021-06-13--13:22:28-wallpaper8.jpg",
-        "https://asia-property.herokuapp.com/2021-06-13--13:22:28-wallpaper5.jpg"
+        "https://asia-property.herokuapp.com/2021-07-18--14:04:06-default-user.png",
+        "https://asia-property.herokuapp.com/2021-07-18--14:04:06-default-agent-pic.jpg"
       ],
-      "type": [
-        "apartment",
-        "villa"
-      ],
+      "type": "apartment",
       "price": "1.000.000.000",
       "is_featured": false,
+      "is_renting": true,
+      "bedroom_count": 3,
+      "bathroom_count": 2,
+      "building_size": 54,
+      "description": "this is the description of the apartment data.",
       "status": "available",
       "country": "indonesia",
       "city": "batam",
-      "address": "Jalan Batam no.9",
-      "_id": "60c22e15f49b1f20b791328b",
+      "address": "Kecamatan Batam Kota, Komplek Kintamani Blok B no 8",
+      "_id": "60f434d6fbba829a87ff3ffa",
+      "name": "Apartment 01",
+      "agent": {
+        "image": "https://asia-property.herokuapp.com/public/uploads/2021-06-13--13:03:26-default-agent-pic.jpg",
+        "country": "indonesia",
+        "city": "tanjung pinang",
+        "_id": "60bca4fd033e1d38148d6703",
+        "name": "fred+agent+2",
+        "email": "fred+agent+2@gmail.com",
+        "phone_number": "085800000002"
+      },
+      "created_at": "2021-07-18T14:04:06.424Z",
+      "updated_at": "2021-07-18T14:10:19.211Z",
+    },
+    {
+      "images": [
+        "https://asia-property.herokuapp.com/2021-07-18--14:12:59-default-user.png",
+        "https://asia-property.herokuapp.com/2021-07-18--14:12:59-default-agent-pic.jpg"
+      ],
+      "type": "apartment",
+      "price": "1.000.000.000",
+      "is_featured": false,
+      "is_renting": false,
+      "bedroom_count": 3,
+      "bathroom_count": 2,
+      "building_size": 54,
+      "description": "this is the description of the apartment data",
+      "status": "available",
+      "country": "indonesia",
+      "city": "batam",
+      "address": "Kecamatan Batam Kota, Komplek Kintamani Blok B no 8",
+      "_id": "60f436ebc014959da2a3e824",
       "name": "Apartment 02",
       "agent": {
         "image": "https://asia-property.herokuapp.com/public/uploads/2021-06-13--13:03:26-default-agent-pic.jpg",
@@ -187,39 +218,8 @@ Made with ExpressJS ( Node.js ) & MongoDB, API link - https://asia-property.hero
         "email": "fred+agent+2@gmail.com",
         "phone_number": "085800000002"
       },
-      "created_at": "2021-06-10T15:21:57.125Z",
-      "updated_at": "2021-06-13T13:22:28.741Z",
-      "__v": 0
-    },
-    {
-      "images": [
-        "https://asia-property.herokuapp.com/2021-06-13--13:23:10-wallpaper8.jpg",
-        "https://asia-property.herokuapp.com/2021-06-13--13:23:10-wallpaper5.jpg"
-      ],
-      "type": [
-        "apartment",
-        "villa"
-      ],
-      "price": "1.000.000.000",
-      "is_featured": false,
-      "status": "available",
-      "country": "indonesia",
-      "city": "batam",
-      "address": "Jalan Batam no.88",
-      "_id": "60c36d7fc9afc41487338b52",
-      "name": "Apartment 88-edited",
-      "agent": {
-        "image": "https://asia-property.herokuapp.com/public/uploads/2021-06-13--13:03:26-default-agent-pic.jpg",
-        "country": "indonesia",
-        "city": "tanjung pinang",
-        "_id": "60bca4fd033e1d38148d6703",
-        "name": "fred+agent+2",
-        "email": "fred+agent+2@gmail.com",
-        "phone_number": "085800000002"
-      },
-      "created_at": "2021-06-11T14:04:47.507Z",
-      "updated_at": "2021-06-13T13:23:10.638Z",
-      "__v": 0
+      "created_at": "2021-07-18T14:12:59.326Z",
+      "updated_at": "2021-07-18T14:12:59.327Z",
     },
   ]
 }
@@ -284,7 +284,6 @@ Made with ExpressJS ( Node.js ) & MongoDB, API link - https://asia-property.hero
       "phone_number": "085800000001",
       "created_at": "2021-06-06T10:11:40.657Z",
       "updated_at": "2021-06-13T13:03:07.276Z",
-      "__v": 0
     },
     {
       "image": "https://asia-property.herokuapp.com/public/uploads/2021-06-13--13:03:26-default-agent-pic.jpg",
@@ -296,121 +295,74 @@ Made with ExpressJS ( Node.js ) & MongoDB, API link - https://asia-property.hero
       "phone_number": "085800000002",
       "created_at": "2021-06-06T10:35:41.091Z",
       "updated_at": "2021-06-13T13:03:26.194Z",
-      "__v": 0
     }
   ]
 }
 ```
 
-#### FeaturedLists Endpoints
+#### Wishlists Endpoints
 
-| Method | Endpoint                                      | Description                     |
-| ------ | --------------------------------------------- | ------------------------------- |
-| POST   | `/featured-list/create`                       | create a new featured list data |
-| PUT    | `/featured-list/update`                       | update a featured list data     |
-| GET    | `/featured-list/get`                          | get all featured list data      |
-| GET    | `/featured-list/get-by-id/${featuredlist_id}` | get featured list data by id    |
-| DELETE | `/featured-list/delete?id=${featuredlist_id}` | delete featured list by id      |
+| Method | Endpoint                                                               | Description                            |
+| ------ | ---------------------------------------------------------------------- | -------------------------------------- |
+| POST   | `/wishlist/create`                                                     | create a new wishlist data             |
+| GET    | `/wishlist/get`                                                        | get all wishlist data                  |
+| GET    | `/wishlist/get-by-user-id/${user_id}`                                  | get wishlist data that the user_id has |
+| DELETE | `/wishlist/delete?user_id=${user_id}&real_estate_id=${real_estate_id}` | delete wishlist by id                  |
 
-| CreateFeaturedList Field |
-| ------------------------ |
-| `access-token` (admin)   |
-| userId                   |
-| realEstateId             |
+| CreateWishlist Field  |
+| --------------------- |
+| `access-token` (user) |
+| userId                |
+| realEstateId          |
 
-| UpdateFeaturedList Field |
-| ------------------------ |
-| `access-token` (admin)   |
-| userId                   |
-| realEstateId             |
+| GetAllWishlists Field  |
+| ---------------------- |
+| `access-token` (admin) |
 
-| GetAllFeaturedLists Field |
+| GetWishlistByUserId Field |
 | ------------------------- |
-| `access-token` (admin)    |
+| `access-token` (user)     |
 
-| GetFeaturedListById Field |
-| ------------------------- |
-| `access-token` (admin)    |
+| DeleteWishlist Field  |
+| --------------------- |
+| `access-token` (user) |
 
-| DeleteFeaturedList Field |
-| ------------------------ |
-| `access-token` (admin)   |
-
-#### FeaturedLists GetAll Response ( TODO: Update Response )
+#### Wishlists Get by Userid Response
 
 ```javascript
 {
   "status": "success",
-  "message": "Successfully get all featured lists.",
-  "results": [
-    {
-      "_id": "60c37f842da1dc22c72fc166",
-      "featured_title": "Featured-RealEstate-1",
-      "featured_cost": "100.000",
-      "user": {
-        "image": "https://asia-property.herokuapp.com/public/uploads/2021-06-07--14:49:21-default-product-image.jpg",
-        "country": "indonesia",
-        "city": "batam",
-        "_id": "60be31f19abca124eb510480",
-        "username": "userleader",
-        "email": "userleader@gmail.com",
-        "phone_number": "081288880001",
-        "created_at": "2021-06-07T14:49:21.554Z",
-        "updated_at": "2021-06-07T14:49:21.578Z",
-      },
-      "realEstate": {
-        "images": [
-          "https://asia-property.herokuapp.com/2021-06-13--13:24:13-wallpaper8.jpg",
-          "https://asia-property.herokuapp.com/2021-06-13--13:24:13-wallpaper5.jpg"
-        ],
-        "type": [
-          "apartment",
-          "villa"
-        ],
-        "price": "1.000.000.000",
-        "is_featured": true,
-        "status": "available",
-        "country": "indonesia",
-        "city": "batam",
-        "address": "Jalan Batam no.9",
-        "_id": "60c37a9cb8bb6820429a94e1",
-        "name": "Apartment 05",
-        "agent": "60bca4fd033e1d38148d6703",
-        "created_at": "2021-06-11T15:00:44.315Z",
-        "updated_at": "2021-06-13T13:24:13.821Z",
-      }
+  "message": "Successfully get wishlist list by user of propertyuser.",
+  "results": {
+    "_id": "60f44a0e43ee54ad217292fd",
+    "user": {
+      "role": "user",
+      "image": "public/images/default-user.png",
+      "_id": "60f43d032e63cfa12462367c",
+      "username": "propertyuser",
+      "email": "propertyuser@gmail.com",
+      "phone_number": "081288880003",
     },
-    {
-      "_id": "60c3810ada992323ae2fc26a",
-      "featured_title": "Featured-RealEstate-2",
-      "user": {
-        "image": "https://asia-property.herokuapp.com/public/uploads/2021-06-07--14:49:21-default-product-image.jpg",
-        "country": "indonesia",
-        "city": "batam",
-        "_id": "60be31f19abca124eb510480",
-        "username": "userleader",
-        "email": "userleader@gmail.com",
-        "phone_number": "081288880001",
-        "created_at": "2021-06-07T14:49:21.554Z",
-        "updated_at": "2021-06-07T14:49:21.578Z",
-      },
-      "realEstate": {
+    "wishlists": [
+      {
         "images": [
-          "https://asia-property.herokuapp.com/2021-06-13--13:23:10-wallpaper8.jpg",
-          "https://asia-property.herokuapp.com/2021-06-13--13:23:10-wallpaper5.jpg"
+          "https://asia-property.herokuapp.com/2021-07-18--14:04:06-default-user.png",
+          "https://asia-property.herokuapp.com/2021-07-18--14:04:06-default-agent-pic.jpg"
         ],
-        "type": [
-          "apartment",
-          "villa"
-        ],
+        "type": "apartment",
         "price": "1.000.000.000",
         "is_featured": false,
+        "is_renting": true,
+        "bedroom_count": 3,
+        "bathroom_count": 2,
+        "building_size": 54,
+        "description": "this is the description of the apartment data.",
         "status": "available",
         "country": "indonesia",
         "city": "batam",
-        "address": "Jalan Batam no.88",
-        "_id": "60c36d7fc9afc41487338b52",
-        "name": "Apartment 88-edited",
+        "address": "Kecamatan Batam Kota, Komplek Kintamani Blok B no 8",
+        "_id": "60f434d6fbba829a87ff3ffa",
+        "name": "Apartment 01",
         "agent": {
           "image": "https://asia-property.herokuapp.com/public/uploads/2021-06-13--13:03:26-default-agent-pic.jpg",
           "country": "indonesia",
@@ -420,12 +372,38 @@ Made with ExpressJS ( Node.js ) & MongoDB, API link - https://asia-property.hero
           "email": "fred+agent+2@gmail.com",
           "phone_number": "085800000002",
         },
-        "created_at": "2021-06-11T14:04:47.507Z",
-        "updated_at": "2021-06-13T13:23:10.638Z",
-        "__v": 0
+      },
+      {
+        "images": [
+          "https://asia-property.herokuapp.com/2021-07-18--14:13:03-default-user.png",
+          "https://asia-property.herokuapp.com/2021-07-18--14:13:03-default-agent-pic.jpg"
+        ],
+        "type": "apartment",
+        "price": "1.000.000.000",
+        "is_featured": false,
+        "is_renting": false,
+        "bedroom_count": 3,
+        "bathroom_count": 2,
+        "building_size": 54,
+        "description": "this is the description of the apartment data",
+        "status": "available",
+        "country": "indonesia",
+        "city": "batam",
+        "address": "Kecamatan Batam Kota, Komplek Kintamani Blok B no 8",
+        "_id": "60f436efc014959da2a3e825",
+        "name": "Apartment 88",
+        "agent": {
+          "image": "https://asia-property.herokuapp.com/public/uploads/2021-06-13--13:03:26-default-agent-pic.jpg",
+          "country": "indonesia",
+          "city": "tanjung pinang",
+          "_id": "60bca4fd033e1d38148d6703",
+          "name": "fred+agent+2",
+          "email": "fred+agent+2@gmail.com",
+          "phone_number": "085800000002",
+        },
       }
-    }
-  ]
+    ]
+  }
 }
 ```
 
