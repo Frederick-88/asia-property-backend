@@ -8,10 +8,11 @@ module.exports = {
       type: req.body.type,
       price: req.body.price,
       is_featured: req.body.is_featured,
-      bedroom: req.body.bedroom,
-      bath: req.body.bath,
+      is_renting: req.body.is_renting,
+      bedroom_count: req.body.bedroom_count,
+      bathroom_count: req.body.bathroom_count,
+      building_size: req.body.building_size,
       description: req.body.description,
-      rating: req.body.rating,
       status: req.body.status,
       address: req.body.address,
       country: req.body.country,
@@ -71,10 +72,12 @@ module.exports = {
           type: req.body.type || selectedRealEstate.type,
           price: req.body.price || selectedRealEstate.price,
           is_featured: req.body.is_featured || selectedRealEstate.is_featured,
-          bedroom: req.body.bedroom || selectedRealEstate.bedroom,
-          bath: req.body.bath || selectedRealEstate.bath,
+          is_renting: req.body.is_renting || selectedRealEstate.is_renting,
+          bedroom_count:
+            req.body.bedroom_count || selectedRealEstate.bedroom_count,
+          bathroom_count:
+            req.body.bathroom_count || selectedRealEstate.bathroom_count,
           description: req.body.description || selectedRealEstate.description,
-          rating: req.body.rating || selectedRealEstate.rating,
           status: req.body.status || selectedRealEstate.status,
           address: req.body.address || selectedRealEstate.address,
           country: req.body.country || selectedRealEstate.country,
@@ -98,6 +101,17 @@ module.exports = {
           editObj,
           { new: true } // used when we use findByIdAndUpdate, to return the updated document instead of old one
         )
+          .populate({
+            path: "agent",
+            select: [
+              "name",
+              "email",
+              "image",
+              "phone_number",
+              "country",
+              "city",
+            ],
+          })
           .then((response) => {
             res.status(200).json({
               status: "success",
@@ -155,10 +169,22 @@ module.exports = {
   },
 
   searchRealEstate: (req, res) => {
-    const realEstateNameQuery = req.query.search_query;
-    const realEstateQuery = new RegExp(realEstateNameQuery, "i"); //regex for search by query
+    // search function reference -> https://stackoverflow.com/questions/10610131/checking-if-a-field-contains-a-string
+    const urlNameQuery = req.query.search_query;
+    const urlTypeQuery = req.query.type;
+    const realEstateNameQuery = new RegExp(urlNameQuery, "i"); //regex for search by query
 
-    RealEstatesModel.find({ name: realEstateQuery })
+    const searchQuery = {};
+    if (urlNameQuery) {
+      searchQuery.name = realEstateNameQuery;
+    }
+    if (urlTypeQuery && urlTypeQuery === "for-rent") {
+      searchQuery.is_renting = true;
+    } else if (urlTypeQuery && urlTypeQuery === "for-sale") {
+      searchQuery.is_renting = false;
+    }
+
+    RealEstatesModel.find(searchQuery)
       .populate({
         path: "agent",
         select: ["name", "email", "image", "phone_number", "country", "city"],
@@ -166,7 +192,7 @@ module.exports = {
       .then((response) => {
         res.status(200).json({
           status: "success",
-          message: `Successfully get real estates based on '${realEstateNameQuery}' search query.`,
+          message: `Successfully get real estates based on search query.`,
           results: response,
         });
       })

@@ -17,16 +17,16 @@ const upload = multer({
   storage: storage,
 });
 
-// upload.array("images[]", 3) or upload.array(selector,fileLimit) means upload max 3 files with 'images[]' key. you can check more options on the multer docs or go to the chat backend.
+// upload.array("images[]", 5) or upload.array(selector,fileLimit) means upload max 5 files with 'images[]' key. you can check more options on the multer docs or go to the chat backend.
 router.post(
   "/create",
-  upload.array("images[]", 3),
+  upload.array("images[]", 5),
   validateAdmin,
   RealEstatesController.createRealEstate
 );
 router.put(
   "/update",
-  upload.array("images[]", 3),
+  upload.array("images[]", 5),
   validateAdmin,
   RealEstatesController.updateRealEstateById
 );

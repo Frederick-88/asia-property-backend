@@ -14,7 +14,7 @@ const RealEstatesModel = new Schema(
       ref: "Agents", // must same as the model's name (exported)
     },
     images: { type: Array, default: [] },
-    type: { type: Array, default: [] }, // apartment, cluster, house, homestay
+    type: { type: String, default: "house" }, // apartment, house-cluster, house, villa
     price: {
       type: String,
       default: "-",
@@ -24,11 +24,19 @@ const RealEstatesModel = new Schema(
       type: Boolean,
       default: false,
     },
-    bedroom: {
+    is_renting: {
+      type: Boolean,
+      default: false,
+    },
+    bedroom_count: {
       type: Number,
       default: 0,
     },
-    bath: {
+    bathroom_count: {
+      type: Number,
+      default: 0,
+    },
+    building_size: {
       type: Number,
       default: 0,
     },
@@ -36,13 +44,9 @@ const RealEstatesModel = new Schema(
       type: String,
       default: "-",
     },
-    rating: {
-      type: Number,
-      default: 0,
-    },
     status: {
       type: String,
-      default: "available", // available, sold, rented, renting
+      default: "available", // available, sold, rented
     },
     country: {
       type: String,
