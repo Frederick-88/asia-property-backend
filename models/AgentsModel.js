@@ -10,7 +10,8 @@ const AgentsModel = new Schema(
     },
     image: {
       type: String,
-      default: "public/images/default-agent-pic.jpg",
+      default:
+        "https://asia-property.herokuapp.com/public/images/default-agent-pic.jpg",
     },
     email: {
       type: String,
