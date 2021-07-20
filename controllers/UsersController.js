@@ -82,8 +82,10 @@ module.exports = {
           const payload = {
             id: user.id,
             email: user.email,
+            image: user.image,
             username: user.username,
             role: user.role,
+            phone_number: user.phone_number,
           };
 
           jwt.sign(
