@@ -74,7 +74,7 @@ module.exports = {
       if (!user) {
         return res.status(404).json({
           status: "error",
-          message: "Email not found",
+          message: "Email not found.",
         });
       } else {
         if (bcrypt.compareSync(req.body.password, user.password)) {
@@ -104,7 +104,7 @@ module.exports = {
         } else {
           return res.status(422).json({
             status: "error",
-            error: "Incorrect password, please try again.",
+            message: "Incorrect password, please try again.",
           });
         }
       }
