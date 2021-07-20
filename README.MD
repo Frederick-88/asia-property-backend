@@ -255,13 +255,13 @@ Made with ExpressJS ( Node.js ) & MongoDB, API link - https://asia-property.hero
 | country                |
 | city                   |
 
-| GetAllAgents Field    |
-| --------------------- |
-| `access-token` (user) |
+| GetAllAgents Field |
+| ------------------ |
+| `no_any_field`     |
 
-| GetAgentById Field    |
-| --------------------- |
-| `access-token` (user) |
+| GetAgentById Field |
+| ------------------ |
+| `no_any_field`     |
 
 | DeleteAgent Field      |
 | ---------------------- |

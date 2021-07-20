@@ -30,8 +30,8 @@ router.put(
   upload.single("image"),
   AgentsController.updateAgentById
 );
-router.get("/get", validateUser, AgentsController.getAllAgents);
-router.get("/get-by-id/:agentId", validateUser, AgentsController.getAgentById);
+router.get("/get", AgentsController.getAllAgents);
+router.get("/get-by-id/:agentId", AgentsController.getAgentById);
 router.delete("/delete", validateAdmin, AgentsController.deleteAgentById);
 
 module.exports = router;
