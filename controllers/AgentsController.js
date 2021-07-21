@@ -11,7 +11,7 @@ module.exports = {
     };
 
     if (req.file && req.file.path) {
-      const url = "https://asia-property.herokuapp.com/";
+      const url = "https://asia-property.herokuapp.com/public/uploads";
       obj.image = url + req.file.path;
     }
 
@@ -33,7 +33,7 @@ module.exports = {
     const agentId = req.query.id;
     AgentsModel.findById(agentId)
       .then((selectedAgent) => {
-        const url = "https://asia-property.herokuapp.com/";
+        const url = "https://asia-property.herokuapp.com/public/uploads";
         // if request body not exist replace with the existing/old one
         const editObj = {
           name: req.body.name || selectedAgent.name,

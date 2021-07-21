@@ -22,7 +22,7 @@ module.exports = {
     if (req.files.length) {
       const array = [];
       req.files.forEach((file) => {
-        const url = "https://asia-property.herokuapp.com/";
+        const url = "https://asia-property.herokuapp.com/public/uploads";
         array.push(url + file.filename);
       });
       obj.images = array;
@@ -85,7 +85,7 @@ module.exports = {
         };
 
         if (req.files.length) {
-          const url = "https://asia-property.herokuapp.com/";
+          const url = "https://asia-property.herokuapp.com/public/uploads";
           const array = [];
           req.files.forEach((file) => {
             array.push(url + file.filename);
