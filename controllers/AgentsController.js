@@ -1,6 +1,8 @@
 const AgentsModel = require("../models/AgentsModel");
 
 module.exports = {
+  // TODO : Error in uploading files will receive image url like
+  // https://asia-property.herokuapp.com/public/uploads/public/uploads/2021-07-21--16:44:53-agent05.jpg
   createAgent: (req, res, next) => {
     const obj = {
       name: req.body.name,
