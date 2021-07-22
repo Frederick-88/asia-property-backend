@@ -1,7 +1,7 @@
 const AgentsModel = require("../models/AgentsModel");
 
 module.exports = {
-  // TODO : Error in uploading files will receive image url like
+  // TODO : Fix error in uploading files will receive image url like, when do admin feature
   // https://asia-property.herokuapp.com/public/uploads/public/uploads/2021-07-21--16:44:53-agent05.jpg
   createAgent: (req, res, next) => {
     const obj = {
@@ -13,7 +13,7 @@ module.exports = {
     };
 
     if (req.file && req.file.path) {
-      const url = "https://asia-property.herokuapp.com/public/uploads/";
+      const url = "https://asia-property.herokuapp.com/";
       obj.image = url + req.file.path;
     }
 
@@ -35,7 +35,7 @@ module.exports = {
     const agentId = req.query.id;
     AgentsModel.findById(agentId)
       .then((selectedAgent) => {
-        const url = "https://asia-property.herokuapp.com/public/uploads/";
+        const url = "https://asia-property.herokuapp.com/";
         // if request body not exist replace with the existing/old one
         const editObj = {
           name: req.body.name || selectedAgent.name,
