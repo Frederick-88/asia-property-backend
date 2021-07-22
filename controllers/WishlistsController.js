@@ -4,8 +4,8 @@ const RealEstatesModel = require("../models/RealEstatesModel");
 module.exports = {
   createWishlist: (req, res, next) => {
     const obj = {
-      user_id: req.body.userId,
-      real_estate_id: req.body.realEstateId,
+      userId: req.body.userId,
+      realEstateId: req.body.real_estate_id,
     };
 
     WishlistsModel.create(obj)
