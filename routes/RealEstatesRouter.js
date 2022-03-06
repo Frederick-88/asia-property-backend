@@ -17,7 +17,8 @@ const upload = multer({
   storage: storage,
 });
 
-// upload.array("images[]", 5) or upload.array(selector,fileLimit) means upload max 5 files with 'images[]' key. you can check more options on the multer docs or go to the chat backend.
+// upload.array("images[]", 5) or upload.array(selector,fileLimit) means upload max 5 files with 'images[]' key. you can check more options on the multer docs or go to the circle_messenger_application backend ( on your github ).
+// note: but still this 5 validation, means 5 files. It validates only at file uploads. if we put on request body, it won't detect
 router.post(
   "/create",
   upload.array("images[]", 5),
@@ -32,6 +33,7 @@ router.put(
 );
 router.get("/get", RealEstatesController.getAllRealEstates);
 router.get("/get-by-id/:realEstateId", RealEstatesController.getRealEstateById);
+router.get("/get-inquiries", RealEstatesController.getFeaturedRealEstate);
 router.get("/search", RealEstatesController.searchRealEstate);
 router.delete(
   "/delete",

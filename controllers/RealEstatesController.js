@@ -4,7 +4,7 @@ module.exports = {
   createRealEstate: (req, res, next) => {
     const obj = {
       name: req.body.name,
-      agent: req.body.agent,
+      agent: req.body.agent, // actually the field can be agent_id, but due to lack of time, we just proceed. a proper example can be seen on WishlistsController + WishlistsModel
       type: req.body.type,
       price: req.body.price,
       is_featured: req.body.is_featured,
@@ -66,9 +66,12 @@ module.exports = {
 
     RealEstatesModel.findById(realEstateId)
       .then((selectedRealEstate) => {
+        const isImageFileExist =
+          (req.files && req.files.length) ||
+          (req.body.images && req.body.images.length);
         const editObj = {
           name: req.body.name || selectedRealEstate.name,
-          agent: req.body.agent || selectedRealEstate.agent,
+          agent: req.body.agent || selectedRealEstate.agent, // actually the field can be agent_id, but due to lack of time, we just proceed. a proper example can be seen on WishlistsController + WishlistsModel
           type: req.body.type || selectedRealEstate.type,
           price: req.body.price || selectedRealEstate.price,
           is_featured: req.body.is_featured || selectedRealEstate.is_featured,
@@ -84,12 +87,21 @@ module.exports = {
           city: req.body.city || selectedRealEstate.city,
         };
 
-        if (req.files.length) {
+        // multiple image upload handling + ability to merge with the previous images data
+        if (isImageFileExist) {
           const url = "https://asia-property.herokuapp.com/public/uploads/";
           const array = [];
-          req.files.forEach((file) => {
-            array.push(url + file.filename);
-          });
+
+          if (req.files.length) {
+            req.files.forEach((file) => {
+              array.push(url + file.filename);
+            });
+          }
+          if (req.body.images.length) {
+            req.body.images.forEach((image_url) => {
+              array.push(image_url);
+            });
+          }
 
           editObj.images = array;
         } else {
@@ -159,6 +171,25 @@ module.exports = {
         res.status(200).json({
           status: "success",
           message: `Successfully get the real estate of ${response.name}.`,
+          results: response,
+        });
+      })
+      .catch((error) => {
+        console.log(error);
+        res.status(500).json(error);
+      });
+  },
+
+  getFeaturedRealEstate: (req, res, next) => {
+    RealEstatesModel.find({ is_featured: true })
+      .populate({
+        path: "agent",
+        select: ["name", "email", "image", "phone_number", "country", "city"],
+      })
+      .then((response) => {
+        res.status(200).json({
+          status: "success",
+          message: "Successfully get all inquiries / featured real estates.",
           results: response,
         });
       })

@@ -426,3 +426,8 @@ Backend References :
 Personal Note :
 
 - In a Real Project, store the images to a cloud storage that can stay for a long time. Like on AWS / GCP / other cloud system. Because storing on heroku, it only stays temporary.
+- After made changes on local, and you want to push to Heroku, do :
+
+1. do `heroku whoami` ( make sure you logged in with the account that have access to your heroku )
+2. if you have pushed to github earlier, then dont need to do `git add .` & `git commit -am "your_message_here'`
+3. after step 2, do `git push heroku master`
