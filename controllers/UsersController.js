@@ -115,6 +115,7 @@ module.exports = {
 
   getAllUsers: (req, res, next) => {
     UsersModel.find()
+      .select(["-password"])
       .then((response) => {
         res.status(200).json({
           status: "success",
@@ -132,6 +133,7 @@ module.exports = {
     const userId = req.params.userId;
 
     UsersModel.findById(userId)
+      .select(["-password"])
       .then((response) => {
         res.status(200).json({
           status: "success",
@@ -211,6 +213,7 @@ module.exports = {
         editObj,
         { new: true } // used when we use findByIdAndUpdate, to return the updated document instead of old one
       )
+        .select(["-password"])
         .then((response) => {
           res.status(200).json({
             status: "success",

@@ -52,7 +52,6 @@ app.use(express.static(path.join(__dirname, "public")));
 // with url "http://localhost:8000/public/uploads/2021-06-11--14:08:20-clothe01.jpg""
 app.use("/public", express.static("public"));
 app.use("/public/uploads", express.static("public"));
-// TODO : change multer file uploads name, with full url.
 
 app.use("/", indexRouter);
 app.use("/users", UsersRouter);
