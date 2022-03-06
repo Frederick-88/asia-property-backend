@@ -19,7 +19,7 @@ const upload = multer({
 
 router.post("/register", upload.single("image"), UsersController.register);
 router.post("/login", UsersController.login);
-router.get("/get", validateAdmin, UsersController.getAllUsers);
+router.get("/get", UsersController.getAllUsers);
 router.get("/get-by-id/:userId", validateAdmin, UsersController.getUserById);
 router.put(
   "/update-user-profile",

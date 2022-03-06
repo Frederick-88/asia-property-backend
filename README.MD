@@ -29,9 +29,9 @@ Made with ExpressJS ( Node.js ) & MongoDB, API link - https://asia-property.hero
 | email       |
 | password    |
 
-| GetAllUsers Field      |
-| ---------------------- |
-| `access-token` (admin) |
+| GetAllUsers Field |
+| ----------------- |
+| `no_any_field`    |
 
 | GetUserById Field      |
 | ---------------------- |
@@ -93,52 +93,53 @@ Made with ExpressJS ( Node.js ) & MongoDB, API link - https://asia-property.hero
 
 #### RealEstates Endpoints
 
-| Method | Endpoint                                                              | Description                   |
-| ------ | --------------------------------------------------------------------- | ----------------------------- |
-| POST   | `/real-estate/create`                                                 | create a new real estate data |
-| PUT    | `/real-estate/update`                                                 | update a real estate data     |
-| GET    | `/real-estate/get`                                                    | get all real estates data     |
-| GET    | `/real-estate/get-by-id/${realestate_id}`                             | get real estate data by id    |
-| GET    | `/real-estate/search?search_query=${query}&type=${for-rent/for-sale}` | search real estates data      |
-| DELETE | `/real-estate/delete?id=${realestate_id}`                             | delete real estate by id      |
+| Method | Endpoint                                                              | Description                                 |
+| ------ | --------------------------------------------------------------------- | ------------------------------------------- |
+| POST   | `/real-estate/create`                                                 | create a new real estate data               |
+| PUT    | `/real-estate/update?id=${realestate_id}`                             | update a real estate data                   |
+| GET    | `/real-estate/get`                                                    | get all real estates data                   |
+| GET    | `/real-estate/get-by-id/${realestate_id}`                             | get real estate data by id                  |
+| GET    | `/real-estate/get-inquiries`                                          | get inquiries or featured real estates data |
+| GET    | `/real-estate/search?search_query=${query}&type=${for-rent/for-sale}` | search real estates data                    |
+| DELETE | `/real-estate/delete?id=${realestate_id}`                             | delete real estate by id                    |
 
-| CreateRealEstate Field     |
-| -------------------------- |
-| `access-token` (admin)     |
-| name                       |
-| agent(agent_id)            |
-| type                       |
-| images[ ] `(can_multiple)` |
-| price                      |
-| is_featured                |
-| is_renting                 |
-| bedroom_count              |
-| bathroom_count             |
-| building_size              |
-| description                |
-| status                     |
-| address                    |
-| country                    |
-| city                       |
+| CreateRealEstate Field                          |
+| ----------------------------------------------- |
+| `access-token` (admin)                          |
+| name                                            |
+| agent `(the input value should be an agent_id)` |
+| type                                            |
+| images[ ] `(can_multiple)`                      |
+| price                                           |
+| is_featured                                     |
+| is_renting                                      |
+| bedroom_count                                   |
+| bathroom_count                                  |
+| building_size                                   |
+| description                                     |
+| status                                          |
+| address                                         |
+| country                                         |
+| city                                            |
 
-| UpdateRealEstate Field     |
-| -------------------------- |
-| `access-token` (admin)     |
-| name                       |
-| agent(agent_id)            |
-| type                       |
-| images[ ] `(can_multiple)` |
-| price                      |
-| is_featured                |
-| is_renting                 |
-| bedroom_count              |
-| bathroom_count             |
-| building_size              |
-| description                |
-| status                     |
-| address                    |
-| country                    |
-| city                       |
+| UpdateRealEstate Field                          |
+| ----------------------------------------------- |
+| `access-token` (admin)                          |
+| name                                            |
+| agent `(the input value should be an agent_id)` |
+| type                                            |
+| images[ ] `(can_multiple)`                      |
+| price                                           |
+| is_featured                                     |
+| is_renting                                      |
+| bedroom_count                                   |
+| bathroom_count                                  |
+| building_size                                   |
+| description                                     |
+| status                                          |
+| address                                         |
+| country                                         |
+| city                                            |
 
 | GetAllRealEstates Field |
 | ----------------------- |
@@ -147,6 +148,10 @@ Made with ExpressJS ( Node.js ) & MongoDB, API link - https://asia-property.hero
 | GetRealEstateById Field |
 | ----------------------- |
 | `no_any_field`          |
+
+| GetInquiries or GetFeaturedRealEstates Field |
+| -------------------------------------------- |
+| `no_any_field`                               |
 
 | DeleteRealEstate Field |
 | ---------------------- |
@@ -164,28 +169,28 @@ Made with ExpressJS ( Node.js ) & MongoDB, API link - https://asia-property.hero
         "https://asia-property.herokuapp.com/2021-07-18--14:04:06-default-user.png",
         "https://asia-property.herokuapp.com/2021-07-18--14:04:06-default-agent-pic.jpg"
       ],
-      "type": "apartment",
+      "type": "house",
       "price": "1.000.000.000",
       "is_featured": false,
       "is_renting": true,
-      "bedroom_count": 3,
-      "bathroom_count": 2,
-      "building_size": 54,
-      "description": "this is the description of the apartment data.",
+      "bedroom_count": 5,
+      "bathroom_count": 3,
+      "building_size": 88,
+      "description": "this is the description of the house data.",
       "status": "available",
       "country": "indonesia",
       "city": "batam",
-      "address": "Kecamatan Batam Kota, Komplek Kintamani Blok B no 8",
+      "address": "Kecamatan Bengkong, Bengkong Laut",
       "_id": "60f434d6fbba829a87ff3ffa",
-      "name": "Apartment 01",
+      "name": "House 01",
       "agent": {
         "image": "https://asia-property.herokuapp.com/public/uploads/2021-06-13--13:03:26-default-agent-pic.jpg",
-        "country": "indonesia",
-        "city": "tanjung pinang",
+        "country": "singapore",
+        "city": "singapore",
         "_id": "60bca4fd033e1d38148d6703",
-        "name": "fred+agent+2",
-        "email": "fred+agent+2@gmail.com",
-        "phone_number": "085800000002"
+        "name": "sg-agent-99",
+        "email": "sg-agent-99@gmail.com",
+        "phone_number": "085800088905"
       },
       "created_at": "2021-07-18T14:04:06.424Z",
       "updated_at": "2021-07-18T14:10:19.211Z",
@@ -230,7 +235,7 @@ Made with ExpressJS ( Node.js ) & MongoDB, API link - https://asia-property.hero
 | Method | Endpoint                        | Description             |
 | ------ | ------------------------------- | ----------------------- |
 | POST   | `/agents/create`                | create a new agent data |
-| PUT    | `/agents/update`                | update a agent data     |
+| PUT    | `/agents/update?id=${agent_id}` | update a agent data     |
 | GET    | `/agents/get`                   | get all agents data     |
 | GET    | `/agents/get-by-id/${agent_id}` | get agent data by id    |
 | DELETE | `/agents/delete?id=${agent_id}` | delete agent by id      |
@@ -415,3 +420,9 @@ Backend References :
 - multiple uploads: https://codeforgeek.com/multiple-file-upload-node-js/ & https://codeforgeek.com/multiple-file-upload-node-js/
 - receiving array upload : https://stackoverflow.com/questions/12756688/is-it-possible-to-send-an-array-with-the-postman-chrome-extension
 - create local mongoDB connection: https://zellwk.com/blog/local-mongodb/
+
+---
+
+Personal Note :
+
+- In a Real Project, store the images to a cloud storage that can stay for a long time. Like on AWS / GCP / other cloud system. Because storing on heroku, it only stays temporary.

@@ -1,6 +1,9 @@
 const WishlistsModel = require("../models/WishlistsModel");
 const RealEstatesModel = require("../models/RealEstatesModel");
 
+// Best Populate Example = WishlistController + WishlistsModel.
+// It makes user only need to provide the id field. and can return the response in a proper way.
+
 module.exports = {
   createWishlist: (req, res, next) => {
     const obj = {
