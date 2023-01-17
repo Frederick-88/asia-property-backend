@@ -2,8 +2,12 @@
   "name": "asia-property-backend",
   "version": "1.0.0",
   "private": true,
+  "main": "index.js",
+  "engines": {
+    "node": "14.x"
+  },
   "scripts": {
-    "start": "node ./bin/www",
+    "start": "node index.js",
     "dev": "nodemon ./bin/www"
   },
   "dependencies": {
@@ -23,7 +27,6 @@
     "validator": "^13.6.0"
   },
   "description": "backend of asia property website",
-  "main": "app.js",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/Frederick-88/asia-property-backend.git"
