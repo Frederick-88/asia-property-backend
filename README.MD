@@ -420,6 +420,8 @@ Backend References :
 - multiple uploads: https://codeforgeek.com/multiple-file-upload-node-js/ & https://codeforgeek.com/multiple-file-upload-node-js/
 - receiving array upload : https://stackoverflow.com/questions/12756688/is-it-possible-to-send-an-array-with-the-postman-chrome-extension
 - create local mongoDB connection: https://zellwk.com/blog/local-mongodb/
+- Vercel Deployment: https://www.youtube.com/watch?v=vCuf62T2snY
+- Vercel Deployment Issue Fix: https://stackoverflow.com/a/74119367
 
 ---
 
@@ -431,3 +433,9 @@ Personal Note :
 1. do `heroku whoami` ( make sure you logged in with the account that have access to your heroku )
 2. if you have pushed to github earlier, then dont need to do `git add .` & `git commit -am "your_message_here'`
 3. after step 2, do `git push heroku master`
+
+---
+
+ Previous Urls :
+- https://asia-property-api.vercel.app/ ( current-active )
+- https://asia-property.herokuapp.com/
