@@ -1,6 +1,6 @@
 ## ASIA-PROPERTY ( Backend )
 
-Made with ExpressJS ( Node.js ) & MongoDB, API link - https://asia-property.herokuapp.com
+Made with ExpressJS ( Node.js ) & MongoDB, API link - https://asia-property-api.vercel.app
 
 ### API Endpoints & Response Examples :
 
@@ -67,7 +67,7 @@ Made with ExpressJS ( Node.js ) & MongoDB, API link - https://asia-property.hero
   "results": [
     {
       "role": "user",
-      "image": "https://asia-property.herokuapp.com/public/uploads/2021-06-13--08:14:51-default-user.png",
+      "image": "https://asia-property-api.vercel.app/public/uploads/2021-06-13--08:14:51-default-user.png",
       "_id": "60c49fbda02e303a0b7a2b14",
       "username": "propertyuser",
       "email": "propertyuser@gmail.com",
@@ -78,7 +78,7 @@ Made with ExpressJS ( Node.js ) & MongoDB, API link - https://asia-property.hero
     },
     {
       "role": "admin",
-      "image": "https://asia-property.herokuapp.com/public/uploads/2021-06-13--08:16:44-default-user.png",
+      "image": "https://asia-property-api.vercel.app/public/uploads/2021-06-13--08:16:44-default-user.png",
       "_id": "60c49fd6a02e303a0b7a2b15",
       "username": "propertyadmin",
       "email": "propertyadmin@gmail.com",
@@ -166,8 +166,8 @@ Made with ExpressJS ( Node.js ) & MongoDB, API link - https://asia-property.hero
   "results": [
     {
       "images": [
-        "https://asia-property.herokuapp.com/2021-07-18--14:04:06-default-user.png",
-        "https://asia-property.herokuapp.com/2021-07-18--14:04:06-default-agent-pic.jpg"
+        "https://asia-property-api.vercel.app/2021-07-18--14:04:06-default-user.png",
+        "https://asia-property-api.vercel.app/2021-07-18--14:04:06-default-agent-pic.jpg"
       ],
       "type": "house",
       "price": "1.000.000.000",
@@ -184,7 +184,7 @@ Made with ExpressJS ( Node.js ) & MongoDB, API link - https://asia-property.hero
       "_id": "60f434d6fbba829a87ff3ffa",
       "name": "House 01",
       "agent": {
-        "image": "https://asia-property.herokuapp.com/public/uploads/2021-06-13--13:03:26-default-agent-pic.jpg",
+        "image": "https://asia-property-api.vercel.app/public/uploads/2021-06-13--13:03:26-default-agent-pic.jpg",
         "country": "singapore",
         "city": "singapore",
         "_id": "60bca4fd033e1d38148d6703",
@@ -197,8 +197,8 @@ Made with ExpressJS ( Node.js ) & MongoDB, API link - https://asia-property.hero
     },
     {
       "images": [
-        "https://asia-property.herokuapp.com/2021-07-18--14:12:59-default-user.png",
-        "https://asia-property.herokuapp.com/2021-07-18--14:12:59-default-agent-pic.jpg"
+        "https://asia-property-api.vercel.app/2021-07-18--14:12:59-default-user.png",
+        "https://asia-property-api.vercel.app/2021-07-18--14:12:59-default-agent-pic.jpg"
       ],
       "type": "apartment",
       "price": "1.000.000.000",
@@ -215,7 +215,7 @@ Made with ExpressJS ( Node.js ) & MongoDB, API link - https://asia-property.hero
       "_id": "60f436ebc014959da2a3e824",
       "name": "Apartment 02",
       "agent": {
-        "image": "https://asia-property.herokuapp.com/public/uploads/2021-06-13--13:03:26-default-agent-pic.jpg",
+        "image": "https://asia-property-api.vercel.app/public/uploads/2021-06-13--13:03:26-default-agent-pic.jpg",
         "country": "indonesia",
         "city": "tanjung pinang",
         "_id": "60bca4fd033e1d38148d6703",
@@ -280,7 +280,7 @@ Made with ExpressJS ( Node.js ) & MongoDB, API link - https://asia-property.hero
   "message": "Successfully get all agents.",
   "results": [
     {
-      "image": "https://asia-property.herokuapp.com/public/uploads/2021-06-13--13:03:07-default-agent-pic.jpg",
+      "image": "https://asia-property-api.vercel.app/public/uploads/2021-06-13--13:03:07-default-agent-pic.jpg",
       "country": "indonesia",
       "city": "batam",
       "_id": "60bc9f5c033e1d38148d6702",
@@ -291,7 +291,7 @@ Made with ExpressJS ( Node.js ) & MongoDB, API link - https://asia-property.hero
       "updated_at": "2021-06-13T13:03:07.276Z",
     },
     {
-      "image": "https://asia-property.herokuapp.com/public/uploads/2021-06-13--13:03:26-default-agent-pic.jpg",
+      "image": "https://asia-property-api.vercel.app/public/uploads/2021-06-13--13:03:26-default-agent-pic.jpg",
       "country": "indonesia",
       "city": "tanjung pinang",
       "_id": "60bca4fd033e1d38148d6703",
@@ -351,8 +351,8 @@ Made with ExpressJS ( Node.js ) & MongoDB, API link - https://asia-property.hero
     "wishlists": [
       {
         "images": [
-          "https://asia-property.herokuapp.com/2021-07-18--14:04:06-default-user.png",
-          "https://asia-property.herokuapp.com/2021-07-18--14:04:06-default-agent-pic.jpg"
+          "https://asia-property-api.vercel.app/2021-07-18--14:04:06-default-user.png",
+          "https://asia-property-api.vercel.app/2021-07-18--14:04:06-default-agent-pic.jpg"
         ],
         "type": "apartment",
         "price": "1.000.000.000",
@@ -369,7 +369,7 @@ Made with ExpressJS ( Node.js ) & MongoDB, API link - https://asia-property.hero
         "_id": "60f434d6fbba829a87ff3ffa",
         "name": "Apartment 01",
         "agent": {
-          "image": "https://asia-property.herokuapp.com/public/uploads/2021-06-13--13:03:26-default-agent-pic.jpg",
+          "image": "https://asia-property-api.vercel.app/public/uploads/2021-06-13--13:03:26-default-agent-pic.jpg",
           "country": "indonesia",
           "city": "tanjung pinang",
           "_id": "60bca4fd033e1d38148d6703",
@@ -380,8 +380,8 @@ Made with ExpressJS ( Node.js ) & MongoDB, API link - https://asia-property.hero
       },
       {
         "images": [
-          "https://asia-property.herokuapp.com/2021-07-18--14:13:03-default-user.png",
-          "https://asia-property.herokuapp.com/2021-07-18--14:13:03-default-agent-pic.jpg"
+          "https://asia-property-api.vercel.app/2021-07-18--14:13:03-default-user.png",
+          "https://asia-property-api.vercel.app/2021-07-18--14:13:03-default-agent-pic.jpg"
         ],
         "type": "apartment",
         "price": "1.000.000.000",
@@ -398,7 +398,7 @@ Made with ExpressJS ( Node.js ) & MongoDB, API link - https://asia-property.hero
         "_id": "60f436efc014959da2a3e825",
         "name": "Apartment 88",
         "agent": {
-          "image": "https://asia-property.herokuapp.com/public/uploads/2021-06-13--13:03:26-default-agent-pic.jpg",
+          "image": "https://asia-property-api.vercel.app/public/uploads/2021-06-13--13:03:26-default-agent-pic.jpg",
           "country": "indonesia",
           "city": "tanjung pinang",
           "_id": "60bca4fd033e1d38148d6703",

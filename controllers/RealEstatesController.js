@@ -22,7 +22,7 @@ module.exports = {
     if (req.files.length) {
       const array = [];
       req.files.forEach((file) => {
-        const url = "https://asia-property.herokuapp.com/public/uploads/";
+        const url = `${process.env.API_URL}/public/uploads/`;
         array.push(url + file.filename);
       });
       obj.images = array;
@@ -89,7 +89,7 @@ module.exports = {
 
         // multiple image upload handling + ability to merge with the previous images data
         if (isImageFileExist) {
-          const url = "https://asia-property.herokuapp.com/public/uploads/";
+          const url = `${process.env.API_URL}/public/uploads/`;
           const array = [];
 
           if (req.files.length) {

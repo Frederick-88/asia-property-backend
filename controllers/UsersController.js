@@ -16,7 +16,7 @@ module.exports = {
     };
 
     if (req.file && req.file.path) {
-      const url = "https://asia-property.herokuapp.com/";
+      const url = process.env.API_URL;
       obj.image = url + req.file.path;
     }
 
@@ -152,7 +152,7 @@ module.exports = {
     const tokenId = req.tokenId; // received/decoded id from token
     if (tokenId === userId) {
       UsersModel.findById(userId).then((selectedUser) => {
-        const url = "https://asia-property.herokuapp.com/";
+        const url = process.env.API_URL;
         // if request body not exist replace with the existing/old one
         const editObj = {
           username: req.body.username || selectedUser.username,
@@ -194,7 +194,7 @@ module.exports = {
     const userId = req.query.id;
 
     UsersModel.findById(userId).then((selectedUser) => {
-      const url = "https://asia-property.herokuapp.com/";
+      const url = process.env.API_URL;
       // if request body not exist replace with the existing/old one
       const editObj = {
         username: req.body.username || selectedUser.username,

@@ -11,7 +11,7 @@ const AgentsModel = new Schema(
     image: {
       type: String,
       default:
-        "https://asia-property.herokuapp.com/public/images/default-agent-pic.jpg",
+        `${process.env.API_URL}/public/images/default-agent-pic.jpg`,
     },
     email: {
       type: String,

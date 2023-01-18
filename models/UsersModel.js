@@ -31,7 +31,7 @@ const UsersModel = new Schema(
     image: {
       type: String,
       default:
-        "https://asia-property.herokuapp.com/public/images/default-user.png",
+        `${process.env.API_URL}/public/images/default-user.png`,
     },
   },
   {
