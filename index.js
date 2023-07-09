@@ -17,17 +17,17 @@ const app = express();
 
 // to use local mongo database, need to run "sudo systemctl start mongod" in terminal to start the DB
 // then can connect with compass. read mongoDB handbook in readme for further detail
-// const localURLMongoDB = process.env.LOCAL_MONGODB_URL;
-const onlineURLMongoDB = process.env.ONLINE_MONGODB_URL;
+const localURLMongoDB = process.env.LOCAL_MONGODB_URL;
+// const onlineURLMongoDB = process.env.ONLINE_MONGODB_URL;
 
-mongoose.connect(onlineURLMongoDB, {
+mongoose.connect(localURLMongoDB, {
   useNewUrlParser: true,
   useUnifiedTopology: true,
   useFindAndModify: false,
 });
 const databaseConnection = mongoose.connection;
 databaseConnection.once("open", () => {
-  console.log("Database connected:", onlineURLMongoDB);
+  console.log("Database connected:", localURLMongoDB);
 });
 databaseConnection.on("error", (err) => {
   console.error("connection error:", err);

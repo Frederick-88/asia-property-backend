@@ -422,6 +422,7 @@ Backend References :
 - create local mongoDB connection: https://zellwk.com/blog/local-mongodb/
 - Vercel Deployment: https://www.youtube.com/watch?v=vCuf62T2snY
 - Vercel Deployment Issue Fix: https://stackoverflow.com/a/74119367
+- AWS S3 : https://www.youtube.com/watch?v=jwp4U6v-3h4&list=PL7Ip-iVFndN7oFAafIVwdlc1RWjj1ibj6&index=7&t=1590s
 
 ---
 
@@ -436,6 +437,7 @@ Personal Note :
 
 ---
 
- Previous Urls :
+Previous Urls :
+
 - https://asia-property-api.vercel.app/ ( current-active )
 - https://asia-property.herokuapp.com/
