@@ -1,7 +1,8 @@
 const RealEstatesModel = require("../models/RealEstatesModel");
+const { s3UploadV2, s3UploadV3 } = require("../utilities/s3Service");
 
 module.exports = {
-  createRealEstate: (req, res, next) => {
+  createRealEstate: async (req, res, next) => {
     const obj = {
       name: req.body.name,
       agent: req.body.agent, // actually the field can be agent_id, but due to lack of time, we just proceed. a proper example can be seen on WishlistsController + WishlistsModel
@@ -20,11 +21,22 @@ module.exports = {
     };
 
     if (req.files.length) {
+      // --- old way
+      // const array = [];
+      // req.files.forEach((file) => {
+      //   const url = `${process.env.API_URL}/public/uploads/`;
+      //   array.push(url + file.filename);
+      // });
+      // obj.images = array;
+
+      // --- new way
       const array = [];
-      req.files.forEach((file) => {
-        const url = `${process.env.API_URL}/public/uploads/`;
-        array.push(url + file.filename);
+      const s3Results = await s3UploadV2(req.files);
+
+      s3Results.forEach((file) => {
+        array.push(file.Location);
       });
+
       obj.images = array;
 
       RealEstatesModel.create(obj)
@@ -65,7 +77,7 @@ module.exports = {
     const realEstateId = req.query.id;
 
     RealEstatesModel.findById(realEstateId)
-      .then((selectedRealEstate) => {
+      .then(async (selectedRealEstate) => {
         const isImageFileExist =
           (req.files && req.files.length) ||
           (req.body.images && req.body.images.length);
@@ -93,8 +105,15 @@ module.exports = {
           const array = [];
 
           if (req.files.length) {
-            req.files.forEach((file) => {
-              array.push(url + file.filename);
+            // --- old way
+            // req.files.forEach((file) => {
+            //   array.push(url + file.filename);
+            // });
+
+            // --- new way
+            const s3Results = await s3UploadV3(req.files);
+            s3Results.forEach((file) => {
+              array.push(file.Location);
             });
           }
           if (req.body.images.length) {
