@@ -4,15 +4,25 @@ const RealEstatesController = require("../controllers/RealEstatesController");
 const { validateAdmin } = require("../middleware/AuthValidator");
 
 const multer = require("multer");
-const storage = multer.diskStorage({
-  destination: function (req, res, callback) {
-    callback(null, "./public/uploads/");
-  },
-  filename: function (req, file, callback) {
-    const date = new Date().toISOString().slice(0, -5).replace("T", "--"); // format '2021-06-06T10:49:37.350Z' to '2021-06-06--11:11:00'
-    callback(null, date + "-" + file.originalname);
-  },
-});
+
+// ---
+// old way to save in disk storage temporarily
+// ---
+// const storage = multer.diskStorage({
+//   destination: function (req, res, callback) {
+//     callback(null, "./public/uploads/");
+//   },
+//   filename: function (req, file, callback) {
+//     const date = new Date().toISOString().slice(0, -5).replace("T", "--"); // format '2021-06-06T10:49:37.350Z' to '2021-06-06--11:11:00'
+//     callback(null, date + "-" + file.originalname);
+//   },
+// });
+
+// ---
+// new way - to work with aws S3, so can get "buffer" field
+// ---
+const storage = multer.memoryStorage();
+
 const upload = multer({
   storage: storage,
 });
